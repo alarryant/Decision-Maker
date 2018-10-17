@@ -64,14 +64,20 @@ app.get("/u/:RANDOMSTRING", (req, res) => {
 });
 
 // route for admin page w/ access to results
-app.get("/urls/:RANDOMSTRING", (req, res) => {
+app.get("/id/:RANDOMSTRING", (req, res) => {
     let templateVars = {}
     res.render("urls_show", templateVars);
   // urls_show would be results page
 });
 
 // delete a poll option
-app.post("/urls/:RANDOMSTRING/delete", (req, res) => {
+app.post("/id/:RANDOMSTRING/delete", (req, res) => {
   delete // resource from database
   res.redirect('/urls');
+});
+
+// edit a poll option
+app.post("/id/:RANDOMSTRING", (req, res) => {
+    urlDatabaseKey.longURL = req.body.longURL;// will be new poll option
+    res.redirect(`/urls/${RANDOMSTRING}`);
 });
