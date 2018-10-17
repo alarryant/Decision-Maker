@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const functions   = require('./export-functions.js');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -47,31 +48,27 @@ app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
-// stuff imported from tinyapp
-// generate random string for unique URL to share?
-function generateRandomString() {
-var randomString = '';
-const possibleChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
-  for (let i = 0; i < 6; i++) {
-  randomString += possibleChars[getRandomInt(0, 61)];
+
+app.post("/create", (req, res) => {
+  const randomURL = functions.generateRandomString();
+  let templateVars = {
+    title: req.body.title,
+    description: req.body.description,
+    option1: req.body.option1,
+    option2: req.body.option2
   };
-  return randomString;
-}
-
-// route for shareable link
-app.get("/u/:RANDOMSTRING", (req, res) => {
-
+  res.redirect(`/${randomURL}/admin`, templateVars);
 });
 
-// route for admin page w/ access to results
-app.get("/urls/:RANDOMSTRING", (req, res) => {
-    let templateVars = {}
-    res.render("urls_show", templateVars);
-  // urls_show would be results page
-});
+app.get('/:id/admin', (req, res) => {
+  res.render('poll')
+})
+// When user creates
 
-// delete a poll option
-app.post("/urls/:RANDOMSTRING/delete", (req, res) => {
-  delete // resource from database
-  res.redirect('/urls');
-});
+// POST /create
+// Redirect to GET /:id/admin
+
+// When a user votes
+
+// POST /:id/vote
+// Redirect /thanks
