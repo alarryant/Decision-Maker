@@ -51,17 +51,15 @@ app.listen(PORT, () => {
 
 app.post("/create", (req, res) => {
   const randomURL = functions.generateRandomString();
-  let templateVars = {
-    title: req.body.title,
-    description: req.body.description,
-    option1: req.body.option1,
-    option2: req.body.option2
-  };
-  res.redirect(`/${randomURL}/admin`, templateVars);
+  res.redirect(`/${randomURL}/admin`);
 });
 
 app.get('/:id/admin', (req, res) => {
-  res.render('poll')
+  res.render('admin');
+})
+
+app.get('/poll', (req, res) => {
+  res.render('poll');
 })
 // When user creates
 
