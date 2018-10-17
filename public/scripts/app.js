@@ -7,8 +7,13 @@ $(() => {
       $("<div>").text(user.name).appendTo($("body"));
     }
   });
+
+  let counter = $("label").siblings("label").data();
+
   $('#addOption').click(function(event) {
     event.preventDefault();
-    $('Option: <input><br>').attr("type", "text").attr("name", "options").appendTo($(".test"));
+    counter++
+    $(<'label'>Option <br>);
+    $('<input><br>').attr("type", "text").attr("name", "options").appendTo($(".test"));
   });
 });
