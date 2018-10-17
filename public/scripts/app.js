@@ -12,7 +12,7 @@ $(() => {
 
   $('#addOption').click(function(event) {
     event.preventDefault();
-    counter++
+    counter++;
     $(<'label'>Option <br>);
     $('<input><br>').attr("type", "text").attr("name", "options").appendTo($(".test"));
   });
