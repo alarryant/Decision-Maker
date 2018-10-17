@@ -51,14 +51,17 @@ app.listen(PORT, () => {
 
 app.post("/create", (req, res) => {
   const randomURL = functions.generateRandomString();
-
-  res.redirect(`/${randomURL}/admin`);
+  let templateVars = {
+    title: req.body.title,
+    description: req.body.description,
+    option1: req.body.option1,
+    option2: req.body.option2
+  };
+  res.redirect(`/${randomURL}/admin`, templateVars);
 });
 
 app.get('/:id/admin', (req, res) => {
-  // console.log("we're here")
-  res.status(404)
-  res.send('OK')
+  res.render('poll')
 })
 // When user creates
 
