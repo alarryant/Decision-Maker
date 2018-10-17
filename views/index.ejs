@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <title>Home Page</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <h1></h1>
+  <form action="/create" method="post">
+    Email: <input type="email" name="email"><br>
+    Title: <input type="title" name="title"><br>
+    Description: <input type="description" name="description"><br>
+    Option 1: <input type="text" name="option1"><br>
+    Option 2: <input type="text" name="option2"><br>
+    <button type="button" name="addOption">Add another option</button>
+    <input type="submit" value="Create Poll">
+  </form>
+</body>
+
 </html>
