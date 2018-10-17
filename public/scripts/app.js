@@ -1,18 +1,19 @@
-
-$(function () {
-  $(() => {
-    $.ajax({
-      method: "GET",
-      url: "/api/users"
-    }).done((users) => {
-      for (user of users) {
-        $("<div>").text(user.name).appendTo($("body"));
-      }
-    });;
+$(() => {
+  $.ajax({
+    method: "GET",
+    url: "/api/users"
+  }).done((users) => {
+    for (user of users) {
+      $("<div>").text(user.name).appendTo($("body"));
+    }
   });
 
-  $('#addOption').click(function () {
-    let input = `<input type="text" name="options"><br>`;
-    $(input).prependTo($('#addOption'));
+  let counter = $("label").siblings("label").data();
+
+  $('#addOption').click(function (event) {
+    event.preventDefault();
+    counter++;
+    $('<label> Option</label><br>');
+    $('<input><br>').attr("type", "text").attr("name", "options").appendTo($(".test"))
   });
 });
