@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const functions   = require('./export-functions.js');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -48,3 +49,23 @@ app.listen(PORT, () => {
 });
 
 
+app.post("/create", (req, res) => {
+  const randomURL = functions.generateRandomString();
+
+  res.redirect(`/${randomURL}/admin`);
+});
+
+app.get('/:id/admin', (req, res) => {
+  // console.log("we're here")
+  res.status(404)
+  res.send('OK')
+})
+// When user creates
+
+// POST /create
+// Redirect to GET /:id/admin
+
+// When a user votes
+
+// POST /:id/vote
+// Redirect /thanks
