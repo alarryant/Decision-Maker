@@ -13,7 +13,12 @@ $(() => {
   $('#addOption').click(function (event) {
     event.preventDefault();
     counter++;
+<<<<<<< HEAD
     $('<label> Option</label><br>');
     $('<input><br>').attr("type", "text").attr("name", "options").appendTo($(".test"))
+=======
+    $(<'label'>Option <br>);
+    $('<input><br>').attr("type", "text").attr("name", "options").appendTo($(".test"));
+>>>>>>> master
   });
 });
