@@ -47,6 +47,7 @@ app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
+// stuff imported from tinyapp
 // // stuff imported from tinyapp
 // // generate random string for unique URL to share?
 // function generateRandomString() {
@@ -63,6 +64,24 @@ app.listen(PORT, () => {
 
 // });
 
+// route for admin page w/ access to results
+app.get("/id/:RANDOMSTRING", (req, res) => {
+    let templateVars = {}
+    res.render("urls_show", templateVars);
+  // urls_show would be results page
+});
+
+// delete a poll option
+app.post("/id/:RANDOMSTRING/delete", (req, res) => {
+  delete // resource from database
+  res.redirect('/id');
+});
+
+// edit a poll option
+app.post("/id/:RANDOMSTRING", (req, res) => {
+    urlDatabaseKey.longURL = req.body.longURL;// will be new poll option
+    res.redirect(`/id/${RANDOMSTRING}`);
+});
 // // route for admin page w/ access to results
 // app.get("/urls/:RANDOMSTRING", (req, res) => {
 //     let templateVars = {}
