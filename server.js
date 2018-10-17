@@ -47,16 +47,6 @@ app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
-// // stuff imported from tinyapp
-// // generate random string for unique URL to share?
-// function generateRandomString() {
-// var randomString = '';
-// const possibleChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
-//   for (let i = 0; i < 6; i++) {
-//   randomString += possibleChars[getRandomInt(0, 61)];
-//   };
-//   return randomString;
-// }
 
 // // route for shareable link
 // app.get("/u/:RANDOMSTRING", (req, res) => {
