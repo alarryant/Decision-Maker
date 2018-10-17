@@ -6,5 +6,15 @@ $(() => {
     for(user of users) {
       $("<div>").text(user.name).appendTo($("body"));
     }
-  });;
+  });
+// clicking button under create a poll adds another input field
+  $('#addOption').click(function() {
+    let input = `<input type="text" name="options"><br>`;
+    $(input).prependTo($('#addOption'));
+  });
 });
+
+
+
+
+
