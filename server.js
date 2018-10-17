@@ -73,11 +73,11 @@ app.get("/id/:RANDOMSTRING", (req, res) => {
 // delete a poll option
 app.post("/id/:RANDOMSTRING/delete", (req, res) => {
   delete // resource from database
-  res.redirect('/urls');
+  res.redirect('/id');
 });
 
 // edit a poll option
 app.post("/id/:RANDOMSTRING", (req, res) => {
     urlDatabaseKey.longURL = req.body.longURL;// will be new poll option
-    res.redirect(`/urls/${RANDOMSTRING}`);
+    res.redirect(`/id/${RANDOMSTRING}`);
 });
