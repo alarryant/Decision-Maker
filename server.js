@@ -48,11 +48,21 @@ app.listen(PORT, () => {
 });
 
 // stuff imported from tinyapp
+// // stuff imported from tinyapp
+// // generate random string for unique URL to share?
+// function generateRandomString() {
+// var randomString = '';
+// const possibleChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
+//   for (let i = 0; i < 6; i++) {
+//   randomString += possibleChars[getRandomInt(0, 61)];
+//   };
+//   return randomString;
+// }
 
-// route for shareable link
-app.get("/u/:RANDOMSTRING", (req, res) => {
+// // route for shareable link
+// app.get("/u/:RANDOMSTRING", (req, res) => {
 
-});
+// });
 
 // route for admin page w/ access to results
 app.get("/id/:RANDOMSTRING", (req, res) => {
@@ -72,3 +82,15 @@ app.post("/id/:RANDOMSTRING", (req, res) => {
     urlDatabaseKey.longURL = req.body.longURL;// will be new poll option
     res.redirect(`/id/${RANDOMSTRING}`);
 });
+// // route for admin page w/ access to results
+// app.get("/urls/:RANDOMSTRING", (req, res) => {
+//     let templateVars = {}
+//     res.render("urls_show", templateVars);
+//   // urls_show would be results page
+// });
+
+// // delete a poll option
+// app.post("/urls/:RANDOMSTRING/delete", (req, res) => {
+//   delete // resource from database
+//   res.redirect('/urls');
+// });
