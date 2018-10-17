@@ -1,12 +1,14 @@
-// generate random string for unique URL to share?
 function generateRandomString() {
-var randomString = '';
-const possibleChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
-  for (let i = 0; i < 6; i++) {
-  randomString += possibleChars[getRandomInt(0, 61)];
-  };
-  return randomString;
+  let output = '';
+  const letAndNum = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+  for(let i = 0; i < 7; i++){
+    output += letAndNum.charAt(Math.random() * letAndNum.length);
+  }
+  return output;
 }
+
+console.log(generateRandomString());
 
 module.exports = {
   generateRandomString,
