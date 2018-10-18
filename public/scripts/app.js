@@ -29,7 +29,7 @@ var counter = 2;
     $('<br>').appendTo($(".test"));
     } else {
     // implement later with css
-    $('<br><span>').text(`Let's be real you don't have that many things to do. Let's limit it to 5.`).appendTo($("form"));
+    $('<br><span>').attr('class', 'removeError').text(`Let's be real you don't have that many things to do. Let's limit it to 5.`).appendTo($("form"));
     }
   });
 
@@ -40,6 +40,7 @@ var counter = 2;
     $clickTarget.prev().remove();
     $clickTarget.prev().remove();
     $clickTarget.remove();
+    $('.removeError').remove();
     resetCounter();
     counter--;
   });
