@@ -85,12 +85,6 @@ app.get('/:id', (req, res) => {
   });
 });
 
-// app.post('/vote', (req, res) => {
-//   let fakeArray = ['timmies', 'aw', 'mcd'];
-
-//   functions.bordaCount(fakeArray);
-//   redirect('/thanks');
-// });
 // When user creates
 
 // POST /create
