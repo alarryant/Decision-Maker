@@ -1,5 +1,3 @@
-let option = require('../..server.js');
-
 $(() => {
   $.ajax({
     method: "GET",
@@ -22,7 +20,6 @@ var counter = 2;
 
   $('#addOption').click(function (event) {
     event.preventDefault();
-      console.log($('span.counterText').length);
     if (counter <= 4) {
     counter++;
     $('<label>').attr('for', 'options').attr('class', 'counterText').text(`Option ${counter}: `).appendTo($(".test"));
@@ -45,5 +42,9 @@ var counter = 2;
     $('.removeError').remove();
     resetCounter();
     counter--;
+  });
+
+  $(function() {
+    $( "#sortable-1" ).sortable();
   });
 });
