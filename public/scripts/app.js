@@ -9,8 +9,8 @@ $(() => {
   });
 
 function resetCounter(){
-  $('span.counterText').each(function(indivCounterText, val){
-    let increment = indivCounterText + 2;
+  $('label.counterText').each(function(indivCounterText, val){
+    let increment = indivCounterText;
     increment++;
      $(val).text(`Option ${increment}: `);
   });
@@ -23,8 +23,8 @@ var counter = 2;
       console.log($('span.counterText').length);
     if (counter <= 4) {
     counter++;
-    $('<span>').attr('class', 'counterText').text(`Option ${counter}: `).appendTo($(".test"));
-    $('<input>').attr("type", "text").attr("name", "options").appendTo($(".test")).append('<br>');
+    $('<label>').attr('for', 'options').attr('class', 'counterText').text(`Option ${counter}: `).appendTo($(".test"));
+    $('<input>').attr("type", "text").attr("name", "options").appendTo($(".test"));
     $('<button>Delete</button>').attr("class", "delete").appendTo($(".test"));
     $('<br>').appendTo($(".test"));
     } else {
