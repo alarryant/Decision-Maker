@@ -1,3 +1,5 @@
+let option = require('../..server.js');
+
 $(() => {
   $.ajax({
     method: "GET",
@@ -43,10 +45,5 @@ var counter = 2;
     $('.removeError').remove();
     resetCounter();
     counter--;
-  });
-
-    $( function() {
-    $( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
   });
 });
