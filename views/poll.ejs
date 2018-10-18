@@ -3,23 +3,24 @@
 
 <head>
   <% include partials/_header %>
-            <script>
-         $(function() {
-            $( "#sortable-1" ).sortable();
-         });
-      </script>
+  <script>
+    $(function () {
+      $("#sortable-1").sortable();
+    });
+  </script>
   <h1>Poll</h1>
 </head>
 
 <body>
-  <% include partials/_header %>
   <h1>Cast Your Votes</h1>
   <ul id="sortable-1">
-  <% for (i = 0; i < option.length; i++) {%>
-  <li class="default"><%= Object.values(option[i])[0] %></li>
-  <% };%>
-  <ul>
-  <input type="submit" value="Send Vote">
+    <% for (i = 0; i < option.length; i++) {%>
+    <li class="default">
+      <%= Object.values(option[i])[0] %>
+    </li>
+    <% };%>
+    <ul>
+      <input type="submit" value="Send Vote">
 </body>
 
 </html>
