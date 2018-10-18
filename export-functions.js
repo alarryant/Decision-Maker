@@ -8,8 +8,6 @@ function generateRandomString() {
   return output;
 }
 
-console.log(generateRandomString());
-
 module.exports = {
   generateRandomString,
 };
