@@ -65,10 +65,6 @@ app.post("/create", (req, res) => {
       })
     }
   });
-
-
-
-
   res.redirect(`/${randomURL}/admin`);
 });
 
@@ -77,19 +73,17 @@ app.get('/:id/admin', (req, res) => {
 })
 
 app.get('/:id', (req, res) => {
-  let pollID = knex('poll').select('id').where('url', 'like', req.params.id).asCallback((err, id) => {
+  let pollID = knex.select('option.text')
+    .from('option')
+    .join('poll', 'poll_id', '=', 'poll.id')
+    .where('poll.url', 'like', req.params.id)
+    .asCallback((err, option) => {
     if (err) throw (err);
-    console.log
-    return id[0].id;
-  });
-  console.log(pollID);
-  let pollOptions = knex('option').select('text').where('poll_id', 'like', pollID);
-  // console.log('this is poll ID', pollID);
-  // console.log('this is poll options', pollOptions);
-  let templateVars = {
-    pollOptions,
-  };
+    let templateVars = {
+      option,
+    };
   res.render('poll', templateVars);
+  });
 });
 // When user creates
 
