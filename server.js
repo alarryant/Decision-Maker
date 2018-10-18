@@ -85,6 +85,11 @@ app.get('/:id', (req, res) => {
   res.render('poll', templateVars);
   });
 });
+
+app.post('/vote', (req, res) => {
+
+  redirect('/thanks');
+})
 // When user creates
 
 // POST /create
