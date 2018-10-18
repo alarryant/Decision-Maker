@@ -45,9 +45,8 @@ var counter = 2;
     counter--;
   });
 
-  // sortable function
-  //   $( function() {
-  //   $( "#sortable" ).sortable();
-  //   $( "#sortable" ).disableSelection();
-  // } );
+    $( function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
 });
