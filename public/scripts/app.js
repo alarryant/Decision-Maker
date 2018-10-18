@@ -3,7 +3,7 @@ $(() => {
     method: "GET",
     url: "/api/users"
   }).done((users) => {
-    for(user of users) {
+    for (user of users) {
       $("<div>").text(user.name).appendTo($("body"));
     }
   });
@@ -21,7 +21,7 @@ $(() => {
 
 var counter = 2;
 
-  $('#addOption').click(function(event) {
+  $('#addOption').click(function (event) {
     event.preventDefault();
     if (counter <= 4) {
     counter++;
