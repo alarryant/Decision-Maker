@@ -77,8 +77,36 @@ app.get('/:id/admin', (req, res) => {
 })
 
 app.get('/:id', (req, res) => {
+
+  console.log("HERE", req.params.id);
+  knex.select().from('option').where('', req.params.id).asCallback((err,rows) => {
+    console.log("THIS needs to be rows", rows);
+  })
+
+// knex('poll').select('id').where('url', 'like', req.params.id).asCallback((err, id) => {
+//     if (err) throw err;
+//     console.log(id[0].id);
+
+//  });
+
   res.render('poll');
 })
+
+
+// pp.get('/:id', (req, res) => {
+//   let pollID = knex('poll').select('id').where('url', 'like', req.params.id).asCallback((err, id) => {
+//     if (err) throw (err);
+//     let templateVars = {
+//     pollOptions,
+//   });
+//   // console.log(pollID);
+//   let pollOptions = knex('option').select('text').where('poll_id', 'like', pollID);
+//   // console.log('this is poll ID', pollID);
+//   // console.log('this is poll options', pollOptions);
+
+//   };
+//   res.render('poll', templateVars);
+// });
 // When user creates
 
 // POST /create
