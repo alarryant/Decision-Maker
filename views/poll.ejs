@@ -7,14 +7,15 @@
 </head>
 
 <body>
-
+  <form method="POST" action="/vote">
   <h1>Cast Your Votes</h1>
   <ul id="sortable-1">
   <% for (i = 0; i < option.length; i++) {%>
   <li class="default"><%= Object.values(option[i])[0] %></li>
   <% };%>
-  <ul>
+  </ul>
   <input type="submit" value="Send Vote">
+</form>
 </body>
 
 </html>
