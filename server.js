@@ -70,7 +70,7 @@ app.post("/create", (req, res) => {
 
 app.get('/:id/admin', (req, res) => {
   res.render('admin');
-})
+});
 
 app.get('/:id', (req, res) => {
   let pollID = knex.select('option.text')
