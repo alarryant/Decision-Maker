@@ -12,7 +12,7 @@ function bordaCount(optionArray) {
 
   for (i = 0; i < optionArray.length; i++) {
     let numberItems = optionArray.length;
-    let bordaScore = optionArray.length - i;
+    let bordaScore = optionArray.length - i + 1;
     knex('option').where(optionArray[i], 'like', 'text').increment({'vote': bordaScore});
   }
 };
