@@ -79,6 +79,7 @@ app.get('/:id', (req, res) => {
     .where('poll.url', 'like', req.params.id)
     .asCallback((err, option) => {
     if (err) throw (err);
+    console.log(Object.values(option[0])[0]);
     let templateVars = {
       option,
     };

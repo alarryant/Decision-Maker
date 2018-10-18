@@ -3,14 +3,22 @@
 
 <head>
   <% include partials/_header %>
+            <script>
+         $(function() {
+            $( "#sortable-1" ).sortable();
+         });
+      </script>
   <h1>Poll</h1>
 </head>
 
 <body>
 
   <h1>Cast Your Votes</h1>
-
-  <button type="button" name="addOption">Add another option</button>
+  <ul id="sortable-1">
+  <% for (i = 0; i < option.length; i++) {%>
+  <li class="default"><%= Object.values(option[i])[0] %></li>
+  <% };%>
+  <ul>
   <input type="submit" value="Send Vote">
 </body>
 

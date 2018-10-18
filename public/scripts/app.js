@@ -46,11 +46,4 @@ var counter = 2;
     resetCounter();
     counter--;
   });
-
-    $( function() {
-    $( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
-  });
-
-  console.log(option);
 });
