@@ -56,9 +56,6 @@ app.post("/create", (req, res) => {
   knex('poll').returning('*').insert({name: req.body.title, description: req.body.description, email: req.body.email, url: randomURL}).asCallback((err, rows)=> {
     if (err) console.log(err);
 
-  knex.select().from('poll').where('name', req.body.title).asCallback((err,rows) => { //selecting id from created poll to use as foreign key in option table
-    if (err) throw(err);
-
     //loop through options and add to database
     for(let i = 0; i < req.body.options.length; i ++){
       knex('option').returning('*').insert({text: req.body.options[i], votes: 0, poll_id: rows[0].id}).asCallback((err) => {
@@ -67,7 +64,6 @@ app.post("/create", (req, res) => {
         }
       })
     }
-  });
   });
 
 
