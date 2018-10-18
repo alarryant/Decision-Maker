@@ -55,12 +55,11 @@ app.post('/create', (req, res) => {
   const randomURL = functions.generateRandomString();
 
   //inserting poll table into database
-<<<<<<< HEAD
   knex('poll')
     .returning('*')
     .insert({ name: req.body.title, description: req.body.description, email: req.body.email, url: randomURL })
     .asCallback((err, rows) => {
-      if (err) console.log(err);
+      if (err) throw err;
 
       //loop through options and add to database
       for (let i = 0; i < req.body.options.length; i++) {
@@ -68,25 +67,11 @@ app.post('/create', (req, res) => {
           .returning('*')
           .insert({ text: req.body.options[i], votes: 0, poll_id: rows[0].id })
           .asCallback(err => {
-            if (err) {
-              console.log(err);
-            }
+            if (err) throw err;
           });
       }
     });
-=======
-  knex('poll').returning('*').insert({name: req.body.title, description: req.body.description, email: req.body.email, url: randomURL}).asCallback((err, rows)=> {
-    if (err) throw err;
 
-    //loop through options and add to database
-    for(let i = 0; i < req.body.options.length; i ++){
-      knex('option').returning('*').insert({text: req.body.options[i], votes: 0, poll_id: rows[0].id}).asCallback((err) => {
-        if (err) throw err;
-      })
-    }
-  });
-
->>>>>>> master
   res.redirect(`/${randomURL}/admin`);
 });
 
@@ -111,9 +96,8 @@ app.get('/:id', (req, res) => {
 });
 
 app.post('/vote', (req, res) => {
-
   redirect('/thanks');
-})
+});
 // When user creates
 
 // POST /create
