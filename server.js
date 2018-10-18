@@ -81,8 +81,20 @@ app.get('/:id/admin', (req, res) => {
 })
 
 app.get('/:id', (req, res) => {
-  res.render('poll');
-})
+  let pollID = knex('poll').select('id').where('url', 'like', req.params.id).asCallback((err, id) => {
+    if (err) throw (err);
+    console.log
+    return id[0].id;
+  });
+  console.log(pollID);
+  let pollOptions = knex('option').select('text').where('poll_id', 'like', pollID);
+  // console.log('this is poll ID', pollID);
+  // console.log('this is poll options', pollOptions);
+  let templateVars = {
+    pollOptions,
+  };
+  res.render('poll', templateVars);
+});
 // When user creates
 
 // POST /create
