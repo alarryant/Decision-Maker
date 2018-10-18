@@ -51,7 +51,6 @@ app.listen(PORT, () => {
 
 app.post("/create", (req, res) => {
   const randomURL = functions.generateRandomString();
-  console.log("here is req.body:", req.body)
   if (!req.body.title || !req.body.email || !req.body.options) {
     res.status(400).send("please enter all fields")
     return
