@@ -2,18 +2,18 @@
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
-const ENV         = process.env.ENV || "development";
-const express     = require("express");
-const bodyParser  = require("body-parser");
-const sass        = require("node-sass-middleware");
-const app         = express();
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "development";
+const express = require("express");
+const bodyParser = require("body-parser");
+const sass = require("node-sass-middleware");
+const app = express();
 
-const knexConfig  = require("./knexfile");
-const knex        = require("knex")(knexConfig[ENV]);
-const morgan      = require('morgan');
-const knexLogger  = require('knex-logger');
-const functions   = require('./export-functions.js');
+const knexConfig = require("./knexfile");
+const knex = require("knex")(knexConfig[ENV]);
+const morgan = require('morgan');
+const knexLogger = require('knex-logger');
+const functions = require('./export-functions.js');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -50,8 +50,12 @@ app.listen(PORT, () => {
 
 
 app.post("/create", (req, res) => {
+  var input = req.body
   const randomURL = functions.generateRandomString();
   res.redirect(`/${randomURL}/admin`);
+  if (!input) {
+    console.log("no");
+  }
 });
 
 app.get('/:id/admin', (req, res) => {
