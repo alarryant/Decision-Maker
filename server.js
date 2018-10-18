@@ -50,9 +50,12 @@ app.listen(PORT, () => {
 
 
 app.post("/create", (req, res) => {
-
   const randomURL = functions.generateRandomString();
-
+  console.log("here is req.body:", req.body)
+  if (!req.body.title || !req.body.email || !req.body.options) {
+    res.status(400).send("please enter all fields")
+    return
+  }
   //inserting poll table into database
   knex('poll').returning('*').insert({ name: req.body.title, description: req.body.description, email: req.body.email, url: randomURL }).asCallback((err, rows) => {
     if (err) console.log(err);
@@ -71,9 +74,7 @@ app.post("/create", (req, res) => {
 
 
   res.redirect(`/${randomURL}/admin`);
-  if (!input) {
-    console.log("no");
-  }
+
 });
 
 app.get('/:id/admin', (req, res) => {
