@@ -44,4 +44,10 @@ var counter = 2;
     resetCounter();
     counter--;
   });
+
+  // sortable function
+  //   $( function() {
+  //   $( "#sortable" ).sortable();
+  //   $( "#sortable" ).disableSelection();
+  // } );
 });
