@@ -1,20 +1,18 @@
 $main: #17a2b8;
 
 form {
-  width: 550px;
+  width: 700px;
+  height: 100;
   background-color: #eaeaf1;
-  padding: 30px;
+  padding: 100px 100px 50px 100px;
   margin-right: 20px;
   margin-left: 20px;
-
   h3 {
     color: $main;
+    font-size: 2.5em;
     // text-align: center;
   }
-  .email {
-    display: flex;
-  }
-  .btn {
+  #create {
     margin-top: 50px;
   }
   #addOption {
@@ -22,20 +20,21 @@ form {
     margin-right: 22px;
     margin-top: 10px;
   }
-}
-
-.test {
   label {
     width: 80px;
-    margin: 5px 20px 5px 10px;
+    margin: 15px 20px 5px 10px;
     float: left;
-    // clear: left;
-    // text-align: left;
+    font-size: 17px;
+    opacity: 0.8;
   }
   input {
     width: 280px;
     clear: right;
-    // position: relative;
-    margin: 5px 10px 5px 0px;
+    border-radius: 4px;
+    margin: 15px 10px 5px 20px;
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
   }
 }

@@ -9,7 +9,10 @@
 <body>
   <% include partials/_header %>
 
-  <h1 class="pollid">Cast Your Votes for Poll: <%=randomURL%> <%= Object.values(option[0])[1]%></h1>
+  <h1 class="pollid">Cast Your Votes for Poll:
+    <%=randomURL%>
+    <%= Object.values(option[0])[1]%>
+  </h1>
   <ul id="sortable-1">
     <% for (i = 0; i < option.length; i++) {%>
     <li class="default">
