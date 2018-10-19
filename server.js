@@ -71,15 +71,29 @@ app.post('/create', (req, res) => {
           });
       }
     });
-
   res.redirect(`/${randomURL}/admin`);
 });
 
 app.get('/:id/admin', (req, res) => {
-  res.render('admin');
+  let randomURL = req.params.id;
+  knex.select('text', 'poll.name')
+    .from('option')
+    .join('poll', 'poll_id', '=', 'poll.id')
+    .where('poll.url', '=', randomURL)
+    // .max('option.votes')
+    .orderBy('option.votes', 'desc')
+    .asCallback((err, options) => {
+      console.log(options);
+      if (err) throw err;
+      let templateVars = {
+        options,
+        randomURL
+      };
+  res.render('admin', templateVars);
+  });
 });
 app.get('/:id', (req, res) => {
-  let pollID = knex
+  knex
     .select('option.text')
     .from('option')
     .join('poll', 'poll_id', '=', 'poll.id')
@@ -87,7 +101,8 @@ app.get('/:id', (req, res) => {
     .asCallback((err, option) => {
       if (err) throw err;
       let templateVars = {
-        option
+        option,
+        randomURL: req.params.id
       };
       res.render('poll', templateVars);
     });
@@ -95,16 +110,38 @@ app.get('/:id', (req, res) => {
 
 app.post('/vote', (req, res) => {
   let options = req.body.option;
+  let randomURL = req.body.randomURL;
+  console.log(randomURL);
   let countArray = [];
+  // for(let i = 0; i < options.length; i ++){
+  // knex
+  //   .from('option')
+  //   // .select('*')
+  //   .join('poll', 'poll_id', '=', 'poll.id' )
+  //   .where('poll.url', '=', randomURL)
+  //   .andWhere('option.text', '=', options[i])
+  //   .increment('option.votes', options.length - i)
+  //   .asCallback((err, rows) => {
+  //     if (err) {
+  //       throw err;
+  //     };
+      // console.log(rows);
+      // let filteredDb = rows;
+      // for(let i = 0; i < options.length; i ++){
+      //   knex('option').returning('*').where('text', '=', options[i]).whereIn('text', filteredDb).increment('votes', options.length - i)
+      //     .asCallback((err) => {
+      //       if (err) throw err;
+      //     });
+    //   });
+    // };
   for(let i = 0; i < options.length; i ++){
-    // countArray.push(options.length - i);
-    // console.log(options[i])
     knex('option').returning('*').where('text', '=', options[i]).increment('votes', options.length - i).asCallback((err) => {
       if (err) throw err;
     });
   }
-  // console.log(countArray);
-})
+});
+
+// select poll_id join poll on poll_id = poll.id where randomURL = poll.url
 // When user creates
 
 // POST /create
