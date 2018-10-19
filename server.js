@@ -55,6 +55,8 @@ app.listen(PORT, () => {
 app.post('/create', (req, res) => {
   const randomURL = functions.generateRandomString();
 
+  console.log(req.body);
+
   //inserting poll table into database
   knex('poll')
     .returning('*')
