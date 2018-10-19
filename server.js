@@ -112,10 +112,12 @@ app.post('/vote', (req, res) => {
   let options = req.body.option;
   let randomURL = req.body.randomURL;
 
+  //store in promise new array of data to access later
   return new Promise((resolve,reject) => {
   resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', randomURL));
   })
   .then((data) => {
+    //loop through new data and increment columns
   for(let i = 0; i < data.length; i ++){
     knex('option').returning('*').where({text: options[i], poll_id: data[i].id }).increment('votes', options.length - i).asCallback((err) => {
       if(err) throw err;
@@ -126,17 +128,4 @@ app.post('/vote', (req, res) => {
 });
 
 
-
-
-// select poll_id join poll on poll_id = poll.id where randomURL = poll.url
-
-// When user creates
-
-// POST /create
-// Redirect to GET /:id/admin
-
-// When a user votes
-
-// POST /:id/vote
-// Redirect /thanks
 
