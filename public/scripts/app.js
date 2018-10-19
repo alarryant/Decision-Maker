@@ -61,4 +61,14 @@ $(() => {
   $(function() {
     $('#sortable-1').sortable();
   });
+
+  $('.vote').on('click', function(event) {
+    event.preventDefault();
+    let optionArray = [];
+    $('li').each(function(idx, li) {
+      console.log($(li).context.innerText);
+      optionArray.push($(li).context.innerText);
+    });
+    $.post('/vote', { option: optionArray });
+  });
 });

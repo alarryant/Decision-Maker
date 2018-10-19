@@ -81,7 +81,10 @@ app.post('/create', (req, res) => {
 app.get('/:id/admin', (req, res) => {
   res.render('admin');
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 app.get('/:id', (req, res) => {
   let pollID = knex
     .select('option.text')
@@ -90,7 +93,10 @@ app.get('/:id', (req, res) => {
     .where('poll.url', 'like', req.params.id)
     .asCallback((err, option) => {
       if (err) throw err;
+<<<<<<< HEAD
       console.log(Object.values(option[0])[0]);
+=======
+>>>>>>> master
       let templateVars = {
         option
       };
@@ -99,8 +105,22 @@ app.get('/:id', (req, res) => {
 });
 
 app.post('/vote', (req, res) => {
+<<<<<<< HEAD
   redirect('/thanks');
 });
+=======
+  let options = req.body.option;
+  let countArray = [];
+  for(let i = 0; i < options.length; i ++){
+    // countArray.push(options.length - i);
+    // console.log(options[i])
+    knex('option').returning('*').where('text', '=', options[i]).increment('votes', options.length - i).asCallback((err) => {
+      if (err) throw err;
+    });
+  }
+  // console.log(countArray);
+})
+>>>>>>> master
 // When user creates
 
 // POST /create
@@ -110,3 +130,4 @@ app.post('/vote', (req, res) => {
 
 // POST /:id/vote
 // Redirect /thanks
+
