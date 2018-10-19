@@ -95,7 +95,14 @@ app.get('/:id', (req, res) => {
 });
 
 app.post('/vote', (req, res) => {
-  console.log(req.body);
+  function bordaCount(optionArray) {
+    optionArray.forEach(function(item) {
+      let numberItems = optionArray.length;
+      let bordaScore = numberItems - i + 1;
+      knex('option').where('text', '=', item).increment('votes', bordaScore);
+    });
+  };
+  bordaCount(req.body[option]);
 });
 
 // When user creates

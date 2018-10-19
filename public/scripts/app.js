@@ -10,14 +10,13 @@ $(() => {
     }
   });
 
-  function bordaCount(optionArray) {
-    for (i = 0; i < optionArray.length; i++) {
-      let numberItems = optionArray.length;
-      let bordaScore = numberItems - i + 1;
-      let option = optionArray[i];
-      knex('option').where('text', '=', option).increment('votes', bordaScore);
-    }
-  };
+  // function bordaCount(optionArray) {
+  //   optionArray.forEach(function(item) {
+  //     let numberItems = optionArray.length;
+  //     let bordaScore = numberItems - i + 1;
+  //     knex('option').where('text', '=', item).increment('votes', bordaScore);
+  //   }
+  // };
 
   function resetCounter() {
     $('label.counterText').each(function(indivCounterText, val) {
