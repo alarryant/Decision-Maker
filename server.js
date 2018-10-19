@@ -72,7 +72,7 @@ app.post('/create', (req, res) => {
   const randomURL = functions.generateRandomString();
 
   console.log(req.body);
-  if(req.body.email === '' || req.body.title === ''){
+  if(req.body.email === '' || req.body.title === '' || req.body.options[0] === ''){
     res.redirect('./');
   } else {
   //inserting poll table into database
