@@ -3,7 +3,10 @@
   font-family: 'Quicksand', sans-serif;
   font-family: 'Libre Franklin', sans-serif;
 }
-
+.container {
+  height: 100%;
+  width: 100%;
+}
 #nav {
   a {
     color: rgb(216, 193, 236);
@@ -16,7 +19,7 @@
 
 body {
   background-color: #eee;
-  width: 500px h1 {
-    color: #244751;
-  }
+  width: 500px;
+  color: #0e343f;
+  padding-top: 65px;
 }
