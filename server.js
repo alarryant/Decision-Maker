@@ -115,11 +115,3 @@ app.post('/vote', (req, res) => {
 // POST /:id/vote
 // Redirect /thanks
 
-  // function bordaCount(optionArray) {
-  //   for (i = 0; i < optionArray.length; i++) {
-  //     let numberItems = optionArray.length;
-  //     let bordaScore = numberItems - i + 1;
-  //     let option = optionArray[i];
-  //     knex('option').where('text', '=', option).increment('votes', bordaScore);
-  //   }
-  // };
