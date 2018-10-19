@@ -24,17 +24,6 @@ var api_key = process.env.MAILGUN_API;
 var DOMAIN = process.env.MAILGUN_DOMAIN;
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
 
-// var data = {
-//   from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
-//   to: 'lhlmaildemo@gmail.com',
-//   subject: 'Hello',
-//   text: 'Testing some Mailgun awesomness!'
-// };
-
-// mailgun.messages().send(data, function (error, body) {
-//   console.log(body);
-// });
-
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
