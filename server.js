@@ -81,9 +81,11 @@ app.get('/:id/admin', (req, res) => {
     .from('option')
     .join('poll', 'poll_id', '=', 'poll.id')
     .where('poll.url', '=', randomURL)
+    // orders from highest votes to lowest
     .orderBy('option.votes', 'desc')
     .asCallback((err, options) => {
       if (err) throw err;
+      // passing through options with option text and title of poll to admin page
       let templateVars = {
         options,
         randomURL
@@ -121,7 +123,6 @@ app.post('/vote', (req, res) => {
       if(err) throw err;
     })
   }
-  console.log(data);
  })
 });
 
