@@ -3,9 +3,7 @@
   font-family: 'Quicksand', sans-serif;
   font-family: 'Libre Franklin', sans-serif;
 }
-.container {
-  display: flex;
-}
+
 #nav {
   a {
     color: rgb(216, 193, 236);
@@ -17,8 +15,15 @@
 }
 
 body {
+  display: flex;
   background-color: #eee;
   width: 500px;
   color: #0e343f;
   padding-top: 65px;
+  .container {
+    justify-content: center;
+    background-color: pink;
+    width: 900px;
+    height: 100%;
+  }
 }
