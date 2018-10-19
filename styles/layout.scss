@@ -8,6 +8,9 @@
   a {
     color: rgb(216, 193, 236);
     width: 100%;
+    &:hover {
+      color: white;
+    }
   }
 }
 
