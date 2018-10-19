@@ -3,11 +3,13 @@
 
 <head>
   <link href="https://fonts.googleapis.com/css?family=Bai+Jamjuree|Libre+Franklin|Quicksand" rel="stylesheet">
-  <% include partials/_header %>
+  <% include partials/_scripts %>
   <h1>Poll</h1>
 </head>
 
 <body>
+  <% include partials/_header %>
+
   <h1>Cast Your Votes</h1>
   <ul id="sortable-1">
     <% for (i = 0; i < option.length; i++) {%>
