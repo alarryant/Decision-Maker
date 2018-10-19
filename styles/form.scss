@@ -1,33 +1,9 @@
 $main: #17a2b8;
 
 form {
-  width: 700px;
-  background-color: #eaeaf1;
-  padding: 100px 100px 50px 100px;
-  margin-right: 20px;
-  margin-left: 20px;
-  .test {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-around;
-    label {
-      width: 80px;
-      margin: 5px 20px 5px 10px;
-      float: left;
-      // clear: left;
-      // text-align: left;
-    }
-    input {
-      width: 280px;
-      clear: right;
-      // position: relative;
-      margin: 5px 10px 5px 0px;
-    }
-  }
-
   h3 {
     color: $main;
-    font-size: 2em;
+    font-size: 2.5em;
     // text-align: center;
   }
 
@@ -38,5 +14,31 @@ form {
     margin-left: 110px;
     margin-right: 22px;
     margin-top: 10px;
+  }
+  width: 700px;
+  height: 100;
+  background-color: #eaeaf1;
+  padding: 100px 100px 50px 100px;
+  margin-right: 20px;
+  margin-left: 20px;
+  .test {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-around;
+    label {
+      width: 80px;
+      margin: 15px 20px 5px 10px;
+      float: left;
+      font-size: 17px;
+      // clear: left;
+      // text-align: left;
+    }
+    input {
+      width: 280px;
+      clear: right;
+      border-radius: 4px;
+      // position: relative;
+      margin: 15px 10px 5px 0px;
+    }
   }
 }
