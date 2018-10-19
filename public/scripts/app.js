@@ -64,7 +64,7 @@ $(() => {
    $(".vote").on('click', function(event) {
     event.preventDefault();
     let $headerString = $(event.target).siblings('.pollid');
-    let randomURL = $headerString.text().substring(25, 32);
+    let randomURL = $headerString.text().substring(26, 33);
     let optionArray = [];
    $('li').each(function(idx, li) {
      optionArray.push($(li).context.innerText);
