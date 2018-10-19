@@ -10,6 +10,14 @@ $(() => {
     }
   });
 
+  // function bordaCount(optionArray) {
+  //   optionArray.forEach(function(item) {
+  //     let numberItems = optionArray.length;
+  //     let bordaScore = numberItems - i + 1;
+  //     knex('option').where('text', '=', item).increment('votes', bordaScore);
+  //   }
+  // };
+
   function resetCounter() {
     $('label.counterText').each(function(indivCounterText, val) {
       let increment = indivCounterText;
@@ -17,7 +25,6 @@ $(() => {
       $(val).text(`Option ${increment}: `);
     });
   }
-
   var counter = 2;
 
   $('#addOption').click(function(event) {
@@ -46,7 +53,7 @@ $(() => {
     }
   });
 
-  $('form').on('click', '.delete', function(event) {
+  $(".delete").on('click', '.delete', function(event) {
     event.preventDefault();
     const $clickTarget = $(event.target);
     $clickTarget.next().remove();
