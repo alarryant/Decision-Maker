@@ -10,14 +10,6 @@ $(() => {
     }
   });
 
-  // function bordaCount(optionArray) {
-  //   optionArray.forEach(function(item) {
-  //     let numberItems = optionArray.length;
-  //     let bordaScore = numberItems - i + 1;
-  //     knex('option').where('text', '=', item).increment('votes', bordaScore);
-  //   }
-  // };
-
   function resetCounter() {
     $('label.counterText').each(function(indivCounterText, val) {
       let increment = indivCounterText;
