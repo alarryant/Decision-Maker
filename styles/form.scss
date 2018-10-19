@@ -1,7 +1,27 @@
+$main: #17a2b8;
+
 form {
-  width: 490px;
+  width: 550px;
   background-color: #eaeaf1;
-  padding: 10px;
+  padding: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+
+  h3 {
+    color: $main;
+    // text-align: center;
+  }
+  .email {
+    display: flex;
+  }
+  .btn {
+    margin-top: 50px;
+  }
+  #addOption {
+    margin-left: 110px;
+    margin-right: 22px;
+    margin-top: 10px;
+  }
 }
 
 .test {
@@ -9,13 +29,13 @@ form {
     width: 80px;
     margin: 5px 20px 5px 10px;
     float: left;
-    clear: left;
-    text-align: left;
+    // clear: left;
+    // text-align: left;
   }
   input {
     width: 280px;
     clear: right;
-    position: relative;
+    // position: relative;
     margin: 5px 10px 5px 0px;
   }
 }
