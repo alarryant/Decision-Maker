@@ -61,4 +61,22 @@ $(() => {
   $(function() {
     $('#sortable-1').sortable();
   });
+
+  $('.vote').on('click', event => {
+    const optionArray = [];
+    for (
+      let i = 0;
+      i <
+      $(event.target)
+        .prev()
+        .children().length;
+      i++
+    ) {
+      let listItem = $(event.target)
+        .prev()
+        .children()[i];
+      optionArray.push($(listItem).text());
+    }
+    return optionArray;
+  });
 });

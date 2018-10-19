@@ -86,6 +86,7 @@ app.get('/:id', (req, res) => {
     .join('poll', 'poll_id', '=', 'poll.id')
     .where('poll.url', 'like', req.params.id)
     .asCallback((err, option) => {
+<<<<<<< HEAD
       if (err) throw err;
       console.log(Object.values(option[0])[0]);
       let templateVars = {
@@ -98,6 +99,20 @@ app.get('/:id', (req, res) => {
 app.post('/vote', (req, res) => {
   redirect('/thanks');
 });
+=======
+    if (err) throw (err);
+    let templateVars = {
+      option,
+    };
+  res.render('poll', templateVars);
+  });
+});
+
+// app.post('/vote', (req, res) => {
+//   console.log(req.body);
+//   // redirect('/thanks');
+// })
+>>>>>>> master
 // When user creates
 
 // POST /create
