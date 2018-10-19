@@ -54,6 +54,7 @@ var counter = 2;
       let listItem = $(event.target).prev().children()[i];
       optionArray.push($(listItem).text());
     }
+    console.log(optionArray);
     return optionArray;
   })
 
