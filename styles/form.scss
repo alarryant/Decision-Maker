@@ -2,6 +2,13 @@ form {
   width: 490px;
   background-color: #eaeaf1;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+// create poll button:
+.btn {
+  width: 200 px;
 }
 
 .test {

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Bai+Jamjuree|Libre+Franklin|Quicksand" rel="stylesheet">
   <% include partials/_scripts %>
 </head>
 
@@ -9,8 +10,9 @@
   <% include partials/_header %>
 
 
-  <h1>Create Poll</h1>
+
   <form action="/create" method="post">
+    <h1>Create Poll</h1>
     <div class="test">
       <label for="email">Email: </label><input type="email" name="email"><br>
       <label for="title">Title: </label><input type="title" name="title"><br>
@@ -18,8 +20,8 @@
       <label for="options" class="counterText">Option 1: </label><input type="text" name="options"><br>
       <label for="options" class="counterText">Option 2: </label><input type="text" name="options"><br>
     </div>
-    <button type="button" id="addOption" class="btn btn-outline-info">Add another option</button><br>
-    <input type="submit" class="btn btn-outline-info" value="Create Poll">
+    <button type="button" id="addOption" class="btn btn-outline-info btn">Add another option</button><br>
+    <input type="submit" class="btn btn-outline-info -btn" value="Create Poll">
   </form>
   <!-- <section id="sortable">
     <div class="testing">drag and dropping</div><br>
