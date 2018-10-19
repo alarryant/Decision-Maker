@@ -144,8 +144,8 @@ app.post('/vote', (req, res) => {
     var data = {
       from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
       to: info[0].email,
-      subject: `Please vote in this poll: ${info[0].name}!`,
-      text: `Here is the link to vote: localhost:8080/${randomURL}`
+      subject: `Someone just voted in this poll: ${info[0].name}!`,
+      text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
     };
     mailgun.messages().send(data, function (error, body) {
       console.log(body);
@@ -163,7 +163,7 @@ app.post('/vote', (req, res) => {
       .returning('*')
       .where({text: options[i], poll_id: data[i].id })
       .increment('votes', options.length - i)
-      .asCallback((err) => {
+      .asCallback((err, data) => {
         if(err) throw err;
       })
     }
