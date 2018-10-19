@@ -19,6 +19,22 @@ const functions = require('./export-functions.js');
 // Seperated Routes for each Resource
 const usersRoutes = require('./routes/users');
 
+var mailgun = require("mailgun-js");
+var api_key = process.env.MAILGUN_API;
+var DOMAIN = process.env.MAILGUN_DOMAIN;
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
+
+// var data = {
+//   from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+//   to: 'lhlmaildemo@gmail.com',
+//   subject: 'Hello',
+//   text: 'Testing some Mailgun awesomness!'
+// };
+
+// mailgun.messages().send(data, function (error, body) {
+//   console.log(body);
+// });
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -72,6 +88,16 @@ app.post('/create', (req, res) => {
           });
       }
     });
+  var data = {
+    from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+    to: req.body.email,
+    subject: 'Thank you for using Decision Maker!',
+    text: `Your poll, ${req.body.title}, has been created. \n\nHere is the link to your results: localhost:8080/${randomURL}/admin \n\nHere is the shareable link to your poll: localhost:8080/${randomURL}`
+  };
+
+  mailgun.messages().send(data, function (error, body) {
+    console.log(body);
+  });
   res.redirect(`/${randomURL}/admin`);
 });
 
@@ -114,18 +140,35 @@ app.post('/vote', (req, res) => {
   let options = req.body.option;
   let randomURL = req.body.randomURL;
 
-  //store in promise new array of data to access later
+  knex('poll').select('email', 'name').where('url', '=', randomURL).then((info) => {
+    var data = {
+      from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+      to: info[0].email,
+      subject: `Please vote in this poll: ${info[0].name}!`,
+      text: `Here is the link to vote: localhost:8080/${randomURL}`
+    };
+    mailgun.messages().send(data, function (error, body) {
+      console.log(body);
+    })
+  });
+
+  // store in promise new array of data to access later
   return new Promise((resolve,reject) => {
   resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', randomURL));
   })
   .then((data) => {
     //loop through new data and increment columns
   for(let i = 0; i < data.length; i ++){
-    knex('option').returning('*').where({text: options[i], poll_id: data[i].id }).increment('votes', options.length - i).asCallback((err) => {
-      if(err) throw err;
-    })
-  }
+    knex('option')
+      .returning('*')
+      .where({text: options[i], poll_id: data[i].id })
+      .increment('votes', options.length - i)
+      .asCallback((err) => {
+        if(err) throw err;
+      })
+    }
  })
+
 });
 
 
