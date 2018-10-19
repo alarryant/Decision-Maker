@@ -93,10 +93,10 @@ app.get('/:id', (req, res) => {
     });
 });
 
-// app.post('/vote', (req, res) => {
-//   console.log(req.body);
-//   // redirect('/thanks');
-// })
+app.post('/vote', (req, res) => {
+  console.log(req.body);
+  // redirect('/thanks');
+})
 // When user creates
 
 // POST /create
