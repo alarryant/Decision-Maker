@@ -10,6 +10,10 @@ form {
   h3 {
     color: $main;
   }
+  .email {
+    display: flex;
+    justify-content: stretch;
+  }
   .btn {
     margin-top: 50px;
   }
