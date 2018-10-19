@@ -9,7 +9,9 @@
 <body>
   <% include partials/_header %>
 
-  <h1 class="pollid">Cast Your Votes for Poll: <%= Object.values(option[0])[1]%></h1>
+  <h1 class="pollid">Cast Your Votes for Poll:
+    <%= Object.values(option[0])[1]%>
+  </h1>
   <ul id="sortable-1">
     <% for (i = 0; i < option.length; i++) {%>
     <li class="default">
@@ -18,7 +20,7 @@
     <% };%>
   </ul>
   <button class="vote" type="submit"> Sumbit </button>
-  <h5>Share your <a href=/<%=randomURL%>>link</a></h5>
+  <h5>Share your <a href=/ <%=randomURL%>>link</a></h5>
 </body>
 
 </html>

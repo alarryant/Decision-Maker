@@ -21,24 +21,22 @@ form {
   padding: 100px 100px 50px 100px;
   margin-right: 20px;
   margin-left: 20px;
-  .test {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-around;
-    label {
-      width: 80px;
-      margin: 15px 20px 5px 10px;
-      float: left;
-      font-size: 17px;
-      // clear: left;
-      // text-align: left;
-    }
-    input {
-      width: 280px;
-      clear: right;
-      border-radius: 4px;
-      // position: relative;
-      margin: 15px 10px 5px 0px;
-    }
+
+  label {
+    width: 80px;
+    margin: 15px 20px 5px 10px;
+    float: left;
+    font-size: 17px;
+    opacity: 0.7;
+
+    // clear: left;
+    // text-align: left;
+  }
+  input {
+    width: 280px;
+    clear: right;
+    border-radius: 4px;
+    // position: relative;
+    margin: 15px 10px 5px 20px;
   }
 }

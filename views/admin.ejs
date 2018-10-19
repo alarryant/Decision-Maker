@@ -8,18 +8,24 @@
 
 <body>
   <% include partials/_header %>
-  <h1>Admin Page</h1>
-  <h1 class="polltitle"><%= Object.values(options[0])[1]%> </h1>
-  <h3>Results here:</h3>
-  <ol>
-    <% for (let i = 0; i < options.length; i++) {%>
-    <li>
-      <%= Object.values(options[i])[0] %>
-    </li>
-    <% };%>
-</ol>
+  <main class="container">
+    <div class="poll">
+      <h1>Admin Page</h1>
+      <h1 class="polltitle">
+        <%= Object.values(options[0])[1]%>
+      </h1>
+      <h3>Results here:</h3>
+      <ol>
+        <% for (let i = 0; i < options.length; i++) {%>
+        <li>
+          <%= Object.values(options[i])[0] %>
+        </li>
+        <% };%>
+      </ol>
 
-<h5>This is the voting <a href="/<%=randomURL%>">link</a></h5>
+      <h5>This is the voting <a href="/<%=randomURL%>">link</a></h5>
+  </main>
+  </div>
 </body>
 
 </html>
