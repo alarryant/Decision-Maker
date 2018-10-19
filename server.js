@@ -81,10 +81,8 @@ app.get('/:id/admin', (req, res) => {
     .from('option')
     .join('poll', 'poll_id', '=', 'poll.id')
     .where('poll.url', '=', randomURL)
-    // .max('option.votes')
     .orderBy('option.votes', 'desc')
     .asCallback((err, options) => {
-      console.log(options);
       if (err) throw err;
       let templateVars = {
         options,
@@ -96,7 +94,7 @@ app.get('/:id/admin', (req, res) => {
 
 app.get('/:id', (req, res) => {
   knex
-    .select('option.text')
+    .select('option.text', 'poll.name')
     .from('option')
     .join('poll', 'poll_id', '=', 'poll.id')
     .where('poll.url', 'like', req.params.id)
@@ -113,7 +111,6 @@ app.get('/:id', (req, res) => {
 app.post('/vote', (req, res) => {
   let options = req.body.option;
   let randomURL = req.body.randomURL;
-  console.log(randomURL);
   let countArray = [];
   // for(let i = 0; i < options.length; i ++){
   // knex
