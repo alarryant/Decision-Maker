@@ -45,7 +45,7 @@ $(() => {
     }
   });
 
-  $(".delete").on('click', '.delete', function(event) {
+  $("form").on('click', '.delete', function(event) {
     event.preventDefault();
     const $clickTarget = $(event.target);
     $clickTarget.next().remove();
