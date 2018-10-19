@@ -1,10 +1,12 @@
 $(() => {
   $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
+    method: 'GET',
+    url: '/api/users'
+  }).done(users => {
     for (user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
+      $('<div>')
+        .text(user.name)
+        .appendTo($('body'));
     }
   });
 
@@ -17,27 +19,40 @@ $(() => {
     }
   };
 
-  function resetCounter(){
-    $('label.counterText').each(function(indivCounterText, val){
+  function resetCounter() {
+    $('label.counterText').each(function(indivCounterText, val) {
       let increment = indivCounterText;
       increment++;
-       $(val).text(`Option ${increment}: `);
+      $(val).text(`Option ${increment}: `);
     });
-  };
+  }
+>>>>>>> master
 
   var counter = 2;
 
-  $('#addOption').click(function (event) {
+  $('#addOption').click(function(event) {
     event.preventDefault();
     if (counter <= 4) {
-    counter++;
-    $('<label>').attr('for', 'options').attr('class', 'counterText').text(`Option ${counter}: `).appendTo($(".test"));
-    $('<input>').attr("type", "text").attr("name", "options").appendTo($(".test"));
-    $('<button>Delete</button>').attr("class", "delete").appendTo($(".test"));
-    $('<br>').appendTo($(".test"));
+      counter++;
+      $('<label>')
+        .attr('for', 'options')
+        .attr('class', 'counterText')
+        .text(`Option ${counter}: `)
+        .appendTo($('.test'));
+      $('<input>')
+        .attr('type', 'text')
+        .attr('name', 'options')
+        .appendTo($('.test'));
+      $('<button>Delete</button>')
+        .attr('class', 'delete')
+        .appendTo($('.test'));
+      $('<br>').appendTo($('.test'));
     } else {
-    // implement later with css
-    $('<br><span>').attr('class', 'removeError').text(`Let's be real you don't have that many things to do. Let's limit it to 5.`).appendTo($("form"));
+      // implement later with css
+      $('<br><span>')
+        .attr('class', 'removeError')
+        .text(`Let's be real you don't have that many things to do. Let's limit it to 5.`)
+        .appendTo($('form'));
     }
   });
 
@@ -54,30 +69,16 @@ $(() => {
   });
 
   $(function() {
-    $( "#sortable-1" ).sortable();
+    $('#sortable-1').sortable();
   });
 
   $(".vote").on('click', function(event) {
     event.preventDefault();
     let optionArray = [];
-    // let $clickTarget = $(event.target).prev().children();
-    // for (i = 0; i < $clickTarget.length; i++) {
-    // let listItem = optionArray[i];
-    //  optionArray.push($(listItem).text());
-    // }
-
    $('li').each(function(idx, li) {
-     // console.log($(li).text());
      optionArray.push($(li).text());
-
-    // and the rest of your code
     });
-
-
-    console.log(optionArray);
     let JSONArray = JSON.stringify(optionArray);
     $.post("/vote", {option: JSONArray});
   });
 });
-
-

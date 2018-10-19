@@ -1,8 +1,22 @@
-body {
-  background-color: #EEE;
-  width: 500px
+* {
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
+}
 
-  h1 {
+#nav {
+  a {
+    color: rgb(216, 193, 236);
+    width: 100%;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+body {
+  background-color: #eee;
+  width: 500px h1 {
     color: #244751;
   }
 }
