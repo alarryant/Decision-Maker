@@ -3,7 +3,6 @@
   font-family: 'Quicksand', sans-serif;
   font-family: 'Libre Franklin', sans-serif;
 }
-
 #nav {
   a {
     color: rgb(216, 193, 236);
@@ -13,10 +12,21 @@
     }
   }
 }
-
-body {
-  background-color: #eee;
-  width: 500px h1 {
-    color: #244751;
+html {
+  height: 100%;
+  body {
+    height: 100%;
+    min-height: 100%;
+    background-color: #eee;
+    // width: 500px;
+    color: #0e343f;
+    padding-top: 65px;
+    .container {
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      background-color: pink;
+      width: 900px;
+    }
   }
 }
