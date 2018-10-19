@@ -78,7 +78,6 @@ app.post('/create', (req, res) => {
 app.get('/:id/admin', (req, res) => {
   res.render('admin');
 });
-
 app.get('/:id', (req, res) => {
   let pollID = knex
     .select('option.text')
@@ -87,8 +86,10 @@ app.get('/:id', (req, res) => {
     .where('poll.url', 'like', req.params.id)
     .asCallback((err, option) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
       if (err) throw err;
-      console.log(Object.values(option[0])[0]);
       let templateVars = {
         option
       };
@@ -97,6 +98,7 @@ app.get('/:id', (req, res) => {
 });
 
 app.post('/vote', (req, res) => {
+<<<<<<< HEAD
   redirect('/thanks');
 });
 =======
@@ -113,6 +115,12 @@ app.post('/vote', (req, res) => {
 //   // redirect('/thanks');
 // })
 >>>>>>> master
+=======
+  let options = req.body.option;
+  console.log(req.body.option)
+  // redirect('/thanks');  function bordaCount(optionArray) {
+})
+>>>>>>> master
 // When user creates
 
 // POST /create
@@ -122,3 +130,12 @@ app.post('/vote', (req, res) => {
 
 // POST /:id/vote
 // Redirect /thanks
+
+  // function bordaCount(optionArray) {
+  //   for (i = 0; i < optionArray.length; i++) {
+  //     let numberItems = optionArray.length;
+  //     let bordaScore = numberItems - i + 1;
+  //     let option = optionArray[i];
+  //     knex('option').where('text', '=', option).increment('votes', bordaScore);
+  //   }
+  // };
