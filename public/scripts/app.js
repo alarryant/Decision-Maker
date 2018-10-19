@@ -69,13 +69,14 @@ $(() => {
     $('#sortable-1').sortable();
   });
 
-  $(".vote").on('click', function(event) {
+   $(".vote").on('click', function(event) {
     event.preventDefault();
+    let $headerString = $(event.target).siblings('.pollid');
+    let randomURL = $headerString.text().substring(25, 32);
     let optionArray = [];
    $('li').each(function(idx, li) {
-     optionArray.push($(li).text());
+     optionArray.push($(li).context.innerText);
     });
-    let JSONArray = JSON.stringify(optionArray);
-    $.post("/vote", {option: JSONArray});
+    $.post("/vote", {option: optionArray, randomURL: randomURL});
   });
 });
