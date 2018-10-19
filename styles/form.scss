@@ -3,18 +3,34 @@ $main: #17a2b8;
 form {
   width: 700px;
   background-color: #eaeaf1;
-  padding: 50px;
+  padding: 100px 100px 50px 100px;
   margin-right: 20px;
   margin-left: 20px;
+  .test {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    label {
+      width: 80px;
+      margin: 5px 20px 5px 10px;
+      float: left;
+      // clear: left;
+      // text-align: left;
+    }
+    input {
+      width: 280px;
+      clear: right;
+      // position: relative;
+      margin: 5px 10px 5px 0px;
+    }
+  }
 
   h3 {
     color: $main;
     font-size: 2em;
     // text-align: center;
   }
-  .email {
-    display: flex;
-  }
+
   .btn {
     margin-top: 50px;
   }
@@ -22,21 +38,5 @@ form {
     margin-left: 110px;
     margin-right: 22px;
     margin-top: 10px;
-  }
-}
-
-.test {
-  label {
-    width: 80px;
-    margin: 5px 20px 5px 10px;
-    float: left;
-    // clear: left;
-    // text-align: left;
-  }
-  input {
-    width: 280px;
-    clear: right;
-    // position: relative;
-    margin: 5px 10px 5px 0px;
   }
 }
