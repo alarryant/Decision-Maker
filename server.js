@@ -8,6 +8,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const sass = require('node-sass-middleware');
 const app = express();
+//
 
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
@@ -80,10 +81,8 @@ app.get('/:id/admin', (req, res) => {
     .from('option')
     .join('poll', 'poll_id', '=', 'poll.id')
     .where('poll.url', '=', randomURL)
-    // .max('option.votes')
     .orderBy('option.votes', 'desc')
     .asCallback((err, options) => {
-      console.log(options);
       if (err) throw err;
       let templateVars = {
         options,
@@ -95,12 +94,12 @@ app.get('/:id/admin', (req, res) => {
 
 app.get('/:id', (req, res) => {
   knex
-    .select('option.text')
+    .select('option.text', 'poll.name')
     .from('option')
     .join('poll', 'poll_id', '=', 'poll.id')
     .where('poll.url', 'like', req.params.id)
     .asCallback((err, option) => {
-      if (err) throw err;
+      if (err) throw (err);
       let templateVars = {
         option,
         randomURL: req.params.id
@@ -113,10 +112,10 @@ app.post('/vote', (req, res) => {
   let options = req.body.option;
   let randomURL = req.body.randomURL;
 
-   return new Promise((resolve,reject) => {
+  return new Promise((resolve,reject) => {
   resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', randomURL));
- })
- .then((data) => {
+  })
+  .then((data) => {
   for(let i = 0; i < data.length; i ++){
     knex('option').returning('*').where({text: options[i], poll_id: data[i].id }).increment('votes', options.length - i).asCallback((err) => {
       if(err) throw err;
@@ -130,6 +129,7 @@ app.post('/vote', (req, res) => {
 
 
 // select poll_id join poll on poll_id = poll.id where randomURL = poll.url
+
 // When user creates
 
 // POST /create
