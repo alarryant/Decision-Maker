@@ -92,6 +92,7 @@ app.get('/:id/admin', (req, res) => {
   res.render('admin', templateVars);
   });
 });
+
 app.get('/:id', (req, res) => {
   knex
     .select('option.text')
