@@ -78,8 +78,9 @@ app.post('/create', (req, res) => {
 app.get('/:id/admin', (req, res) => {
   res.render('admin');
 });
+
 app.get('/:id', (req, res) => {
-  let pollID = knex
+  knex
     .select('option.text')
     .from('option')
     .join('poll', 'poll_id', '=', 'poll.id')
@@ -87,7 +88,8 @@ app.get('/:id', (req, res) => {
     .asCallback((err, option) => {
       if (err) throw err;
       let templateVars = {
-        option
+        option,
+        randomURL: req.params.id
       };
       res.render('poll', templateVars);
     });
@@ -95,14 +97,29 @@ app.get('/:id', (req, res) => {
 
 app.post('/vote', (req, res) => {
   let options = req.body.option;
-  let countArray = [];
-  for(let i = 0; i < options.length; i ++){
-    // countArray.push(options.length - i);
-    // console.log(options[i])
-    knex('option').returning('*').where('text', '=', options[i]).increment('votes', options.length - i).asCallback((err) => {
-      if (err) throw err;
-    });
-  }
+  let randomURL = req.body.randomURL;
+
+  console.log(req.body);
+  console.log("RANDOMURL", randomURL);
+
+ return new Promise((resolve,reject) => {
+  resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', randomURL));
+ })
+ .then((data) => {
+  console.log("DATA", data);
+ })
+
+
+
+
+
+  // for(let i = 0; i < options.length; i ++){
+  //   // countArray.push(options.length - i);
+  //   // console.log(options[i])
+  //   knex('option').returning('*').where('text', '=', options[i]).increment('votes', options.length - i).asCallback((err) => {
+  //     if (err) throw err;
+  //   });
+  // }
   // console.log(countArray);
 })
 // When user creates
