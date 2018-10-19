@@ -10,10 +10,16 @@ form {
   h3 {
     color: $main;
   }
-}
-
-// create poll button:
-.btn {
+  .btn {
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 50px;
+  }
+  #addOption {
+    margin-left: 110px;
+    margin-right: 22px;
+    margin-top: 10px;
+  }
 }
 
 .test {
