@@ -26,8 +26,6 @@ $(() => {
       $(val).text(`Option ${increment}: `);
     });
   }
->>>>>>> master
-
   var counter = 2;
 
   $('#addOption').click(function(event) {
@@ -56,7 +54,7 @@ $(() => {
     }
   });
 
-  $(".inputField").on('click', '.delete', function(event) {
+  $(".delete").on('click', '.delete', function(event) {
     event.preventDefault();
     const $clickTarget = $(event.target);
     $clickTarget.next().remove();
