@@ -112,35 +112,22 @@ app.get('/:id', (req, res) => {
 app.post('/vote', (req, res) => {
   let options = req.body.option;
   let randomURL = req.body.randomURL;
-  console.log(randomURL);
-  let countArray = [];
-  // for(let i = 0; i < options.length; i ++){
-  // knex
-  //   .from('option')
-  //   // .select('*')
-  //   .join('poll', 'poll_id', '=', 'poll.id' )
-  //   .where('poll.url', '=', randomURL)
-  //   .andWhere('option.text', '=', options[i])
-  //   .increment('option.votes', options.length - i)
-  //   .asCallback((err, rows) => {
-  //     if (err) {
-  //       throw err;
-  //     };
-      // console.log(rows);
-      // let filteredDb = rows;
-      // for(let i = 0; i < options.length; i ++){
-      //   knex('option').returning('*').where('text', '=', options[i]).whereIn('text', filteredDb).increment('votes', options.length - i)
-      //     .asCallback((err) => {
-      //       if (err) throw err;
-      //     });
-    //   });
-    // };
-  for(let i = 0; i < options.length; i ++){
-    knex('option').returning('*').where('text', '=', options[i]).increment('votes', options.length - i).asCallback((err) => {
-      if (err) throw err;
-    });
+
+   return new Promise((resolve,reject) => {
+  resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', randomURL));
+ })
+ .then((data) => {
+  for(let i = 0; i < data.length; i ++){
+    knex('option').returning('*').where({text: options[i], poll_id: data[i].id }).increment('votes', options.length - i).asCallback((err) => {
+      if(err) throw err;
+    })
   }
+  console.log(data);
+ })
 });
+
+
+
 
 // select poll_id join poll on poll_id = poll.id where randomURL = poll.url
 // When user creates
