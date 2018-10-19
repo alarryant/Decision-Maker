@@ -119,7 +119,6 @@ app.post('/create', (req, res) => {
 
   }
 
-    });
   var data = {
     from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
     to: req.body.email,
