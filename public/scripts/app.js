@@ -8,15 +8,24 @@ $(() => {
     }
   });
 
-function resetCounter(){
-  $('label.counterText').each(function(indivCounterText, val){
-    let increment = indivCounterText;
-    increment++;
-     $(val).text(`Option ${increment}: `);
-  });
-}
+  function bordaCount(optionArray) {
+    for (i = 0; i < optionArray.length; i++) {
+      let numberItems = optionArray.length;
+      let bordaScore = numberItems - i + 1;
+      let option = optionArray[i];
+      knex('option').where('text', '=', option).increment('votes', bordaScore);
+    }
+  };
 
-var counter = 2;
+  function resetCounter(){
+    $('label.counterText').each(function(indivCounterText, val){
+      let increment = indivCounterText;
+      increment++;
+       $(val).text(`Option ${increment}: `);
+    });
+  };
+
+  var counter = 2;
 
   $('#addOption').click(function (event) {
     event.preventDefault();
@@ -32,7 +41,7 @@ var counter = 2;
     }
   });
 
-  $("form").on('click', '.delete', function(event) {
+  $(".inputField").on('click', '.delete', function(event) {
     event.preventDefault();
     const $clickTarget = $(event.target);
     $clickTarget.next().remove();
@@ -48,15 +57,27 @@ var counter = 2;
     $( "#sortable-1" ).sortable();
   });
 
-  $(".vote").on('click', (event) => {
-    const optionArray = [];
-    for(let i = 0; i < $(event.target).prev().children().length; i ++){
-      let listItem = $(event.target).prev().children()[i];
-      optionArray.push($(listItem).text());
-    }
-    return optionArray;
-  })
+  $(".vote").on('click', function(event) {
+    event.preventDefault();
+    let optionArray = [];
+    // let $clickTarget = $(event.target).prev().children();
+    // for (i = 0; i < $clickTarget.length; i++) {
+    // let listItem = optionArray[i];
+    //  optionArray.push($(listItem).text());
+    // }
 
+   $('li').each(function(idx, li) {
+     // console.log($(li).text());
+     optionArray.push($(li).text());
+
+    // and the rest of your code
+    });
+
+
+    console.log(optionArray);
+    let JSONArray = JSON.stringify(optionArray);
+    $.post("/vote", {option: JSONArray});
+  });
 });
 
 

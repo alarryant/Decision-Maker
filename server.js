@@ -14,6 +14,7 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const functions   = require('./export-functions.js');
+//
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -77,12 +78,17 @@ app.get('/:id', (req, res) => {
     .join('poll', 'poll_id', '=', 'poll.id')
     .where('poll.url', 'like', req.params.id)
     .asCallback((err, option) => {
-    if (err) throw (err);
-    let templateVars = {
-      option,
-    };
-  res.render('poll', templateVars);
-  });
+      if (err) throw (err);
+      let templateVars = {
+        option,
+      };
+      res.render('poll', templateVars);
+    });
+});
+
+app.post('/vote', (req, res) => {
+  console.log(req.body);
+
 });
 
 // When user creates
