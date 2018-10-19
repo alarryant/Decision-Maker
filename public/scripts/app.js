@@ -66,7 +66,8 @@ $(() => {
     event.preventDefault();
     let $headerString = $(event.target).siblings('.pollid');
     let randomURL = $headerString.text().substring(25, 32);
-    console.log(randomURL);
+
+
     let optionArray = [];
    $('li').each(function(idx, li) {
      optionArray.push($(li).context.innerText);
