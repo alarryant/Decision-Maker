@@ -71,22 +71,54 @@ app.listen(PORT, () => {
 app.post('/create', (req, res) => {
   const randomURL = functions.generateRandomString();
 
+  console.log(req.body);
+  if(req.body.email === '' || req.body.title === ''){
+    res.redirect('./');
+  } else {
   //inserting poll table into database
-  knex('poll')
+    knex('poll')
     .returning('*')
     .insert({ name: req.body.title, description: req.body.description, email: req.body.email, url: randomURL })
-    .asCallback((err, rows) => {
-      if (err) throw err;
+    .then((data) => {
 
-      //loop through options and add to database
-      for (let i = 0; i < req.body.options.length; i++) {
-        knex('option')
-          .returning('*')
-          .insert({ text: req.body.options[i], votes: 0, poll_id: rows[0].id })
-          .asCallback(err => {
-            if (err) throw err;
-          });
+      // var good_options = req.body.options.filter(op => op.length && op.length > 0);
+      // var insert_objects = good_options.map(op => ({text: op, votes: 0, poll_id: data[0].id}))
+      // knex('option')
+      // .returning('*')
+      // .insert(insert_objects)
+
+      var insert_promises = [];
+      for (let i = 0; i < req.body.options.length; i ++){
+        var option_text = req.body.options[i];
+        if(option_text === '') {
+          console.log("WHAt")
+        } else {
+          console.log("ID", data[0].id)
+          console.log("TEXT", option_text)
+          insert_promises.push(
+            knex('option')
+            .returning('*')
+            .insert({ text: option_text, votes: 0, poll_id: data[0].id })
+          );
+        }
       }
+
+      Promise.all(insert_promises)
+      .then((data) => {
+        res.redirect(`/${randomURL}/admin`);
+      }).catch(err => {
+        console.log("y tho", err);
+        res.redirect('./');
+      })
+
+
+    }).catch(err => {
+      console.log("y tho", err);
+      res.redirect('./');
+    })
+
+  }
+
     });
   var data = {
     from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
@@ -99,6 +131,7 @@ app.post('/create', (req, res) => {
     console.log(body);
   });
   res.redirect(`/${randomURL}/admin`);
+
 });
 
 app.get('/:id/admin', (req, res) => {
@@ -110,7 +143,7 @@ app.get('/:id/admin', (req, res) => {
     // orders from highest votes to lowest
     .orderBy('option.votes', 'desc')
     .asCallback((err, options) => {
-      if (err) throw err;
+            if (err) throw err;
       // passing through options with option text and title of poll to admin page
       let templateVars = {
         options,
