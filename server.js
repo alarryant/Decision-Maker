@@ -81,10 +81,6 @@ app.post('/create', (req, res) => {
 app.get('/:id/admin', (req, res) => {
   res.render('admin');
 });
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 app.get('/:id', (req, res) => {
   let pollID = knex
     .select('option.text')
@@ -93,10 +89,6 @@ app.get('/:id', (req, res) => {
     .where('poll.url', 'like', req.params.id)
     .asCallback((err, option) => {
       if (err) throw err;
-<<<<<<< HEAD
-      console.log(Object.values(option[0])[0]);
-=======
->>>>>>> master
       let templateVars = {
         option
       };
