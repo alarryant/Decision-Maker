@@ -163,7 +163,7 @@ app.get('/user/:id', (req, res) => {
 app.post('/vote', (req, res) => {
   let options = req.body.option;
   let randomURL = req.body.randomURL;
-<<<<<<< HEAD
+
   console.log('this is randomURL', randomURL);
 
   knex('poll')
@@ -191,7 +191,7 @@ app.post('/vote', (req, res) => {
         .where('poll.url', 'like', randomURL)
     );
   }).then(data => {
-=======
+
 
   knex('poll').select('email', 'name').where('url', '=', randomURL).then((info) => {
     var data = {
@@ -210,7 +210,7 @@ app.post('/vote', (req, res) => {
   resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', randomURL))
   })
   .then((data) => {
->>>>>>> master
+
     //loop through new data and increment columns
     const votePromise = [];
     for (let i = 0; i < data.length; i++) {
@@ -221,13 +221,6 @@ app.post('/vote', (req, res) => {
           .increment('votes', options.length - i)
       );
     }
-<<<<<<< HEAD
-    Promise.all(votePromise).then(data => {
-      console.log(data);
-    });
-  });
-});
-=======
     // console.log(Promise.all(votePromise));
     Promise.all(votePromise)
     .then((data) => {
@@ -241,11 +234,8 @@ app.post('/vote', (req, res) => {
 
 });
 
-app.get('/thanks', (req, res) => {
-  res.render('thanks');
-})
 
 
 
 
->>>>>>> master
+
