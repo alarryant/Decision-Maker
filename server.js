@@ -138,7 +138,13 @@ app.get('/admin/:id', (req, res) => {
   });
 });
 
-app.get('/:id', (req, res) => {
+app.get('/thanks', (req, res) => {
+  res.render('thanks');
+})
+
+
+app.get('/user/:id', (req, res) => {
+
   knex
     .select('option.text', 'poll.name')
     .from('option')
@@ -157,7 +163,6 @@ app.get('/:id', (req, res) => {
 app.post('/vote', (req, res) => {
   let options = req.body.option;
   let randomURL = req.body.randomURL;
-  console.log("this is randomURL", randomURL);
 
   knex('poll').select('email', 'name').where('url', '=', randomURL).then((info) => {
     var data = {
@@ -167,13 +172,13 @@ app.post('/vote', (req, res) => {
       text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
     };
     mailgun.messages().send(data, function (error, body) {
-      console.log(body);
+      // console.log(body);
     })
   });
 
   // store in promise new array of data to access later
   return new Promise((resolve,reject) => {
-  resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', randomURL));
+  resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', randomURL))
   })
   .then((data) => {
     //loop through new data and increment columns
@@ -185,13 +190,22 @@ app.post('/vote', (req, res) => {
         .where({text: options[i], poll_id: data[i].id })
         .increment('votes', options.length - i));
     }
-  Promise.all(votePromise)
-  .then((data) => {
-    console.log(data);
-  })
+    // console.log(Promise.all(votePromise));
+    Promise.all(votePromise)
+    .then((data) => {
+      res.redirect('/thanks');
+    }).catch(err =>{
+      console.log("what's this err", err);
+    })
+ }).catch(err =>{
+  console.log("WHHHHY", err);
  })
 
 });
+
+app.get('/thanks', (req, res) => {
+  res.render('thanks');
+})
 
 
 
