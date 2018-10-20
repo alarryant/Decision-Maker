@@ -212,4 +212,4 @@ app.post('/vote', (req, res) => {
 
 app.get('/thanks', (req, res) => {
   res.render('thanks');
-});
+})
