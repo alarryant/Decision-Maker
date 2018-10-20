@@ -1,19 +1,27 @@
-* {
-  font-family: 'VT323', monospace;
-}
 #navbar {
   position: fixed;
   height: 150px;
   width: 100%;
-  margin: auto;
   background: url(../images/Navbar2.png);
+  background-color: white;
   top: 0px;
-  .header {
+  z-index: 99998;
+  opacity: 1;
+  &:hover {
     opacity: 0;
-    width: 100px;
-    float: right;
   }
 }
+
+.header {
+  opacity: 1;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  font-size: 9em;
+  margin: auto;
+  font-family: 'VT323', monospace;
+}
+
 html {
   height: 100%;
   body {
@@ -25,7 +33,6 @@ html {
     margin: auto;
     .container {
       margin: auto;
-      margin-top: 150px;
       height: 1100px;
       width: 1100px;
       background: url('../images/subway2.png');
