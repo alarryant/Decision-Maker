@@ -43,6 +43,8 @@ $(() => {
         .text(`Let's be real you don't have that many things to do. Let's limit it to 5.`)
         .appendTo($('form'));
     }
+    console.log('ThiS IS OPTIONS:' + 'options');
+    console.log('THIS IS OPTION' + 'option');
   });
 
   $('form').on('click', '.delete', function(event) {
