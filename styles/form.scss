@@ -1,28 +1,28 @@
-form {
-
   #create {
     display: inline-block;
-    float: right;
-    margin-right: 400px;
-    margin-top: 230px;
     width: 120px;
     height: 70px;
     border-radius: 10px;
     border-color: white;
     font-family: 'VT323', monospace;
     font-size: 1.25em;
+    position: absolute;
+    margin: 215px 320px;
   }
 
   #addOption {
     display: inline-block;
-    float: left;
-    margin-top: 230px;
     border-radius: 10px;
     width: 120px;
     height: 70px;
     font-family: 'VT323', monospace;
     font-size: 1.25em;
+    position: absolute;
+    margin: 235px 10px;
   }
+
+form {
+
   h3 {
     margin-left: 80px;
     margin-bottom: 70px;
