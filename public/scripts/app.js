@@ -32,7 +32,7 @@ $(() => {
         .attr('type', 'text')
         .attr('name', 'options')
         .appendTo($('.test'));
-      $('<button>Delete</button>')
+      $('<button><i class="far fa-trash-alt"></i></button>')
         .attr('class', 'delete')
         .appendTo($('.test'));
       $('<br>').appendTo($('.test'));
@@ -47,7 +47,7 @@ $(() => {
 
   $("form").on('click', '.delete', function(event) {
     event.preventDefault();
-    const $clickTarget = $(event.target);
+    const $clickTarget = $(event.target).parent();
     $clickTarget.next().remove();
     $clickTarget.prev().remove();
     $clickTarget.prev().remove();
