@@ -1,28 +1,6 @@
 * {
   font-family: 'VT323', monospace;
 }
-#nav {
-  a {
-    opacity: 0;
-    width: 60%;
-    &:hover {
-      color: black;
-      cursor: default;
-      opacity: 1;
-      float: right;
-    }
-  }
-  background: url(../images/Navbar2.png);
-  margin-left: 40px;
-  height: 150px;
-  background-width: 100%;
-  position: fixed;
-  &:hover {
-    color: white;
-    cursor: default;
-    opacity: 0.2;
-  }
-}
 
 html {
   height: 100%;
