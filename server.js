@@ -82,8 +82,6 @@ app.post('/create', (req, res) => {
         if(option_text === '') {
           console.log("WHAt")
         } else {
-          console.log("ID", data[0].id)
-          console.log("TEXT", option_text)
           insert_promises.push(
             knex('option')
             .returning('*')
@@ -178,15 +176,18 @@ app.post('/vote', (req, res) => {
   })
   .then((data) => {
     //loop through new data and increment columns
-  for(let i = 0; i < data.length; i ++){
-    knex('option')
-      .returning('*')
-      .where({text: options[i], poll_id: data[i].id })
-      .increment('votes', options.length - i)
-      .asCallback((err, data) => {
-        if(err) throw err;
-      })
+    const votePromise = [];
+    for(let i = 0; i < data.length; i ++){
+      votePromise.push(
+      knex('option')
+        .returning('*')
+        .where({text: options[i], poll_id: data[i].id })
+        .increment('votes', options.length - i));
     }
+  Promise.all(votePromise)
+  .then((data) => {
+    console.log(data);
+  })
  })
 
 });
