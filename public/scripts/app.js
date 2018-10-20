@@ -45,7 +45,7 @@ $(() => {
     }
   });
 
-  $("form").on('click', '.delete', function(event) {
+  $('form').on('click', '.delete', function(event) {
     event.preventDefault();
     const $clickTarget = $(event.target);
     $clickTarget.next().remove();
@@ -61,14 +61,14 @@ $(() => {
     $('#sortable-1').sortable();
   });
 
-   $(".vote").on('click', function(event) {
+  $('.vote').on('click', function(event) {
     event.preventDefault();
     let $headerString = $(event.target).siblings('#pollid');
     let randomURL = $headerString.text();
     let optionArray = [];
-   $('li').each(function(idx, li) {
-     optionArray.push($(li).context.innerText);
+    $('li').each(function(idx, li) {
+      optionArray.push($(li).context.innerText);
     });
-    $.post("/vote", {option: optionArray, randomURL: randomURL});
+    $.post('/vote', { option: optionArray, randomURL: randomURL });
   });
 });
