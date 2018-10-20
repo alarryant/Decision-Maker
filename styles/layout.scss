@@ -7,7 +7,7 @@
 html {
   height: 100%;
   body {
-    #nav-bar {
+    #navbar {
       position: fixed;
       height: 150px;
       width: 100%;
@@ -17,14 +17,16 @@ html {
         opacity: 0;
         width: 100px;
         float: right;
-        }
       }
+    }
     height: 100%;
     min-height: 100%;
     background-color: white;
     width: 100%;
     color: #0e343f;
+    margin: auto;
     .container {
+      margin: auto;
       height: 1100px;
       width: 1100px;
       background: url('../images/subway2.png');
@@ -32,7 +34,7 @@ html {
       margin-right: 210px;
       margin-left: 165px;
       padding-top: 85px;
-      padding-left: 325px
+      padding-left: 325px;
     }
   }
 }
