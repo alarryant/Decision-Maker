@@ -107,7 +107,7 @@ app.post('/create', (req, res) => {
   }
 
   var data = {
-    from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+    from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
     to: req.body.email,
     subject: 'Thank you for using Decision Maker!',
     text: `Your poll, ${req.body.title}, has been created. \n\nHere is the link to your results: localhost:8080/${randomURL}/admin \n\nHere is the shareable link to your poll: localhost:8080/${randomURL}`
@@ -165,8 +165,8 @@ app.post('/vote', (req, res) => {
   let randomURL = req.body.randomURL;
 
   knex('poll').select('email', 'name').where('url', '=', randomURL).then((info) => {
-        var data = {
-      from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+    var data = {
+      from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
       to: `${info[0].email}`,
       subject: `Someone just voted in this poll: ${info[0].name}!`,
       text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
