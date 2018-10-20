@@ -1,26 +1,76 @@
 * {
   font-family: 'VT323', monospace;
 }
+#nav {
+  a {
+    opacity: 0;
+    width: 60%;
+    &:hover {
+      color: black;
+      cursor: default;
+      opacity: 1;
+      float: right;
+    }
+  }
+  background: url(../images/Navbar2.png);
+  margin-left: 40px;
+  height: 150px;
+  background-width: 100%;
+  position: fixed;
+  &:hover {
+    color: white;
+    cursor: default;
+    opacity: 0.2;
+  }
+}
 
 html {
   height: 100%;
-}
-body {
-  height: 100%;
-  min-height: 100%;
-  background-color: white;
-  // width: 500px;
-  color: #0e343f;
-  margin-top: 125px;
-}
-.container {
-  height: 1100px;
-  width: 1000px;
-  background: url('../images/subway.png');
-  background-color: #ecdada;
-  margin-right: 210px;
-  padding-right: 50px;
-  &.notrain {
-    background: none;
+  body {
+    height: 100%;
+    min-height: 100%;
+    background-color: white;
+    // width: 500px;
+    color: #0e343f;
+    margin-top: 125px;
+    .container {
+      height: 1100px;
+      width: 1000px;
+      background: url('../images/subway.png');
+      background-color: #ecdada;
+      margin-right: 210px;
+      padding-right: 50px;
+    }
   }
 }
+/* Start http://www.cursors-4u.com */
+* {
+  cursor: url(http://cur.cursors-4u.net/mechanics/mec-5/mec487.cur), auto !important;
+} /* End http://www.cursors-4u.com */
+
+// * {
+//   font-family: 'VT323', monospace;
+// }
+
+// html {
+//   height: 100%;
+// }
+// body {
+//   height: 100%;
+//   min-height: 100%;
+//   background-color: white;
+//   // width: 500px;
+//   color: #0e343f;
+//   margin-top: 125px;
+// }
+// .container {
+//   height: 1100px;
+//   width: 1000px;
+//   background: url('../images/subway.png');
+//   background-color: #ecdada;
+//   margin-right: 210px;
+//   padding-right: 50px;
+//   &.notrain {
+//     background: none;
+//   }
+// }
