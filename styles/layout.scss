@@ -1,7 +1,5 @@
 * {
-  font-family: 'Bai Jamjuree', sans-serif;
-  font-family: 'Quicksand', sans-serif;
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: 'VT323', monospace;
 }
 #nav {
   a {
@@ -28,20 +26,23 @@
 
 html {
   height: 100%;
-  body {
-    height: 100%;
-    min-height: 100%;
-    background-color: white;
-    // width: 500px;
-    color: #0e343f;
-    margin-top: 125px;
-    .container {
-      height: 1100px;
-      width: 1000px;
-      background: url('../images/subway.png');
-      background-color: #ecdada;
-      margin-right: 210px;
-      padding-right: 50px;
-    }
+}
+body {
+  height: 100%;
+  min-height: 100%;
+  background-color: white;
+  // width: 500px;
+  color: #0e343f;
+  margin-top: 125px;
+}
+.container {
+  height: 1100px;
+  width: 1000px;
+  background: url('../images/subway.png');
+  background-color: #ecdada;
+  margin-right: 210px;
+  padding-right: 50px;
+  &.notrain {
+    background: none;
   }
 }
