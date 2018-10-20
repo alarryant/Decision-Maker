@@ -105,7 +105,7 @@ app.post('/create', (req, res) => {
   // }
 
   var data = {
-    from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+    from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
     to: req.body.email,
     subject: 'Thank you for using Decision Maker!',
     text: `Your poll, ${
@@ -138,7 +138,13 @@ app.get('/admin/:id', (req, res) => {
     });
 });
 
-app.get('/:id', (req, res) => {
+app.get('/thanks', (req, res) => {
+  res.render('thanks');
+})
+
+
+app.get('/user/:id', (req, res) => {
+
   knex
     .select('option.text', 'poll.name')
     .from('option')
@@ -157,6 +163,7 @@ app.get('/:id', (req, res) => {
 app.post('/vote', (req, res) => {
   let options = req.body.option;
   let randomURL = req.body.randomURL;
+<<<<<<< HEAD
   console.log('this is randomURL', randomURL);
 
   knex('poll')
@@ -184,6 +191,26 @@ app.post('/vote', (req, res) => {
         .where('poll.url', 'like', randomURL)
     );
   }).then(data => {
+=======
+
+  knex('poll').select('email', 'name').where('url', '=', randomURL).then((info) => {
+    var data = {
+      from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+      to: `${info[0].email}`,
+      subject: `Someone just voted in this poll: ${info[0].name}!`,
+      text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
+    };
+    mailgun.messages().send(data, function (error, body) {
+      // console.log(body);
+    })
+  });
+
+  // store in promise new array of data to access later
+  return new Promise((resolve,reject) => {
+  resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', randomURL))
+  })
+  .then((data) => {
+>>>>>>> master
     //loop through new data and increment columns
     const votePromise = [];
     for (let i = 0; i < data.length; i++) {
@@ -194,8 +221,31 @@ app.post('/vote', (req, res) => {
           .increment('votes', options.length - i)
       );
     }
+<<<<<<< HEAD
     Promise.all(votePromise).then(data => {
       console.log(data);
     });
   });
 });
+=======
+    // console.log(Promise.all(votePromise));
+    Promise.all(votePromise)
+    .then((data) => {
+      res.redirect('/thanks');
+    }).catch(err =>{
+      console.log("what's this err", err);
+    })
+ }).catch(err =>{
+  console.log("WHHHHY", err);
+ })
+
+});
+
+app.get('/thanks', (req, res) => {
+  res.render('thanks');
+})
+
+
+
+
+>>>>>>> master
