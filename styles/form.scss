@@ -1,51 +1,83 @@
-$main: #17a2b8;
+  #create {
+    display: inline-block;
+    width: 120px;
+    height: 70px;
+    border-radius: 10px;
+    border-color: white;
+    font-family: 'VT323', monospace;
+    font-size: 1.25em;
+    position: relative;
+    float: right;
+    margin: 7px 353px 0px 0px;
+  }
+
+  #addOption {
+    display: inline-block;
+    border-radius: 10px;
+    width: 120px;
+    height: 70px;
+    font-family: 'VT323', monospace;
+    font-size: 1.25em;
+    position: relative;
+    float: left;
+    margin: 25px 0px 0px 25px;
+  }
 
 form {
-  width: 720px;
-  height: 100%;
-  padding-top: 140px;
-  margin-left: 300px;
+
   h3 {
+    margin-left: 80px;
+    margin-bottom: 70px;
     color: #34444d;
-    font-size: 2em;
-    padding-left: 117px;
-    margin-bottom: 22px;
-    text-align: left;
-    font-weight: bold;
+    font-size: 3em;
+    font-family: 'VT323', monospace;
   }
-  #create {
-    margin-top: 50px;
+}
+
+.test.option3 {
+    height: 235px;
   }
-  #addOption {
-    margin-left: 110px;
-    margin-right: 22px;
-    margin-top: 10px;
+
+.test.option4 {
+    height: 275px;
   }
+
+.test.option5 {
+    height: 310px;
+  }
+
+
+.test {
+  width: 450px;
+  background-color: #fefcde;
+  border-radius: 20px;
+  height: 200px;
+
   label {
     width: 110px;
-    margin: 10px 20px 5px 10px;
     float: left;
-    font-size: 17px;
-    opacity: 0.8;
+    font-size: 1.5em;
     color: #34444d;
-    padding: 2px 2px 2px 5px;
+    padding: 2px;
+    letter-spacing: 1px;
+    margin: 5px;
     font-weight: bold;
+    font-family: 'VT323', monospace;
   }
   input {
     width: 280px;
-    clear: right;
+    float: right;
     border-radius: 4px;
     border-color: white;
-    margin: 10px 10px 5px 0px;
+    padding: 5px;
+    margin: 5px;
     opacity: 0.7;
-    &:hover {
-      opacity: 1;
-    }
   }
   .delete {
     background: none;
     border: none;
     color: #34444d;
+    font-size: 1.5em;
     &:hover {
       opacity: 0.7;
       color: red;
