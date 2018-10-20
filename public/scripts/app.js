@@ -94,14 +94,14 @@ $(() => {
     }); //AJAX Call ends here.
   });
 
-   $('.fb-share').click(function() {
-    FB.ui({
-        method: 'feed',
-        name: 'dan',
-        link: 'http://localhost:8080',
-        picture: '',
-        description: 'Join our poll!'
+    $('.fb-share').click(function() {
+        FB.ui({
+            method: 'feed',
+            name: '',
+            link: 'http://reddit.com',
+            picture: '',
+            description: ''
+        });
     });
-  });
 
 });
