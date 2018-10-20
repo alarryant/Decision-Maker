@@ -193,7 +193,7 @@ app.post('/vote', (req, res) => {
     // console.log(Promise.all(votePromise));
     Promise.all(votePromise)
     .then((data) => {
-      res.redirect('/thanks');
+      res.json({result: "True"});
     }).catch(err =>{
       console.log("what's this err", err);
     })
