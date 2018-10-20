@@ -25,17 +25,31 @@ form {
   }
   h3 {
     margin-left: 80px;
+    margin-bottom: 70px;
     color: #34444d;
     font-size: 3em;
     font-family: 'VT323', monospace;
   }
 }
 
+.test.option3 {
+    height: 235px;
+  }
+
+.test.option4 {
+    height: 275px;
+  }
+
+.test.option5 {
+    height: 310px;
+  }
+
+
 .test {
   width: 450px;
   background-color: #fefcde;
   border-radius: 20px;
-  height: auto;
+  height: 200px;
 
   label {
     width: 110px;

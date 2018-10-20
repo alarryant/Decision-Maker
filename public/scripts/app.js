@@ -36,6 +36,13 @@ $(() => {
         .attr('class', 'delete')
         .appendTo($('.test'));
       $('<br>').appendTo($('.test'));
+      if (counter === 3) {
+        $('.test').addClass('option3').addClass('options');
+      } else if (counter === 4) {
+        $('.test').removeClass('option3').addClass('option4');
+      } else if (counter === 5) {
+        $('.test').removeClass('option4').addClass('option5');
+      }
     } else {
       // implement later with css
       $('<br><span>')
@@ -53,6 +60,13 @@ $(() => {
     $clickTarget.prev().remove();
     $clickTarget.remove();
     $('.removeError').remove();
+    if ($('.test').hasClass('option5')) {
+      $('.test').removeClass('option5').addClass('option4');
+    } else if ($('.test').hasClass('option4')) {
+      $('.test').removeClass('option4').addClass('option3');
+    } else if ($('.test').hasClass('option3')) {
+      $('.test').removeClass('option3');
+    }
     resetCounter();
     counter--;
   });
