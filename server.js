@@ -188,25 +188,22 @@ app.post('/vote', (req, res) => {
         .where('poll.url', 'like', randomURL)
     );
   })
-    .then(data => {
-      //loop through new data and increment columns
-      const votePromise = [];
-      for (let i = 0; i < data.length; i++) {
-        votePromise.push(
-          knex('option')
-            .returning('*')
-            .where({ text: options[i], poll_id: data[i].id })
-            .increment('votes', options.length - i)
-        );
-      }
-      // console.log(Promise.all(votePromise));
-      Promise.all(votePromise)
-        .then(data => {
-          res.redirect('/thanks');
-        })
-        .catch(err => {
-          console.log("what's this err", err);
-        });
+  .then((data) => {
+    //loop through new data and increment columns
+    const votePromise = [];
+    for(let i = 0; i < data.length; i ++){
+      votePromise.push(
+      knex('option')
+        .returning('*')
+        .where({text: options[i], poll_id: data[i].id })
+        .increment('votes', options.length - i));
+    }
+    // console.log(Promise.all(votePromise));
+    Promise.all(votePromise)
+    .then((data) => {
+      res.json({result: "True"});
+    }).catch(err =>{
+      console.log("what's this err", err);
     })
     .catch(err => {
       console.log('WHHHHY', err);
