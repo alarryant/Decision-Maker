@@ -45,6 +45,18 @@ $(() => {
     }
   });
 
+  $('form').on('click', '#create', (function(event) {
+    event.preventDefault();
+    let inputLength = $('input').val().length;
+    console.log("this is inputLength:", inputLength);
+    $('.error-message').slideUp();
+    if ((inputLength === 0)) {
+      $('.error-message')
+        .text('fill in all forms u idiot')
+        .slideDown();
+    }
+  });
+
   $("form").on('click', '.delete', function(event) {
     event.preventDefault();
     const $clickTarget = $(event.target).parent();
