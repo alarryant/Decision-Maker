@@ -188,7 +188,7 @@ app.post('/vote', (req, res) => {
     }
   Promise.all(votePromise)
   .then((data) => {
-    console.log(data);
+    res.redirect('./thanks')
   })
  })
 
