@@ -38,7 +38,7 @@ module.exports = (knex) => {
 
   console.log(req.body);
   if(req.body.email === '' || req.body.title === '' || req.body.options[0] === ''){
-    res.redirect('./');
+    res.redirect('/');
   } else {
   //inserting poll table into database
     knex('poll')
@@ -71,13 +71,13 @@ module.exports = (knex) => {
         res.redirect(`/api/users/admin/${randomURL}`);
       }).catch(err => {
         console.log("y tho", err);
-        res.redirect('./');
+        res.redirect('/');
       })
 
 
     }).catch(err => {
       console.log("y tho", err);
-      res.redirect('./');
+      res.redirect('/');
     })
 
   }
