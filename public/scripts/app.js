@@ -71,4 +71,17 @@ $(() => {
     });
     $.post("/vote", {option: optionArray, randomURL: randomURL});
   });
+
+  // $("form").on('click', '#create', (function(event) {
+  //   event.preventDefault();
+  //   $('input').each(function(field) => {
+  //     if (!field) {
+  //       $('.error-message')
+  //         .text('fill in all forms u idiot')
+  //         .slideDown();
+  //     } else {
+  //       $('.error-message').slideUp();
+  //     }
+  //   });
+  // });
 });
