@@ -11,23 +11,24 @@
 
   <main class="container">
     <form action="/create" method="post">
+      <div class="error-message"></div>
       <h3>Create New Poll</h3>
       <div class="test">
-        <div class="error-message">
-          <div class="email">
-            <label for="email">Email: </label><input type="email" name="email"><br>
-          </div>
-          <div class="title">
-            <label for="title">Title: </label><input type="title" name="title"><br>
-          </div>
-          <div class="description">
-            <label for="description">Description: </label><input type="description" name="description" placeholder="optional"><br>
-          </div>
-          <div class="options">
-            <label for="options" class="counterText">Option 1: </label><input type="text" name="options"><br>
-            <label for="options" class="counterText">Option 2: </label><input type="text" name="options"><br>
-          </div>
+
+        <div class="email">
+          <label for="email">Email: </label><input type="email" name="email"><br>
         </div>
+        <div class="title">
+          <label for="title">Title: </label><input type="title" name="title"><br>
+        </div>
+        <div class="description">
+          <label for="description">Description: </label><input type="description" name="description" placeholder="optional"><br>
+        </div>
+        <div class="options">
+          <label for="options" class="counterText">Option 1: </label><input type="text" name="options"><br>
+          <label for="options" class="counterText">Option 2: </label><input type="text" name="options"><br>
+        </div>
+      </div>
       </div>
       <button type="button" id="addOption" class="btn btn-outline-info btn">Add another option</button><br>
       <input type="submit" id="create" class="btn btn-outline-info -btn" value="Create Poll">
