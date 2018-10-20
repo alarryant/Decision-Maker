@@ -159,16 +159,16 @@ app.get('/:id', (req, res) => {
 app.post('/vote', (req, res) => {
   let options = req.body.option;
   let randomURL = req.body.randomURL;
-  console.log("this is randomURL", randomURL);
+  console.log('this is randomURL', randomURL);
 
-<<<<<<< HEAD
   knex('poll')
     .select('email', 'name')
     .where('url', '=', randomURL)
     .then(info => {
+      console.log('this is info', info);
       var data = {
         from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
-        to: info[0].email,
+        to: `${info[0].email}`,
         subject: `Someone just voted in this poll: ${info[0].name}!`,
         text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
       };
@@ -176,20 +176,6 @@ app.post('/vote', (req, res) => {
         console.log(body);
       });
     });
-=======
-  knex('poll').select('email', 'name').where('url', '=', randomURL).then((info) => {
-    console.log("this is info",info);
-    var data = {
-      from: 'Decision Maker <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
-      to: `${info[0].email}`,
-      subject: `Someone just voted in this poll: ${info[0].name}!`,
-      text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
-    };
-    mailgun.messages().send(data, function (error, body) {
-      console.log(body);
-    })
-  });
->>>>>>> master
 
   // store in promise new array of data to access later
   return new Promise((resolve, reject) => {
