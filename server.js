@@ -192,5 +192,10 @@ app.post('/vote', (req, res) => {
 
 });
 
+app.get('/create', (req, res) => {
+  console.log('wtf');
+  res.redirect('./');
+});
+
 
 
