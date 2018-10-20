@@ -47,7 +47,7 @@ $(() => {
 
   $('form').on('click', '#create', (function(event) {
     event.preventDefault();
-    let inputLength = $('input.text').val().length;
+    let inputLength = $('input').val().length;
     console.log("this is inputLength:", inputLength);
     $('.error-message').slideUp();
     if ((inputLength === 0)) {

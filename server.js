@@ -62,19 +62,19 @@ app.post('/create', (req, res) => {
 
   console.log(req.body);
   if (req.body.email === '' || req.body.title === '' || req.body.options[0] === '') {
-    console.log('its working');
     // res.redirect('./');
+    console.log('hello');
   } else {
     //inserting poll table into database
     knex('poll')
       .returning('*')
       .insert({ name: req.body.title, description: req.body.description, email: req.body.email, url: randomURL })
       .then(data => {
-        var good_options = req.body.options.filter(op => op.length && op.length > 0);
-        var insert_objects = good_options.map(op => ({ text: op, votes: 0, poll_id: data[0].id }));
-        knex('option')
-          .returning('*')
-          .insert(insert_objects);
+        // var good_options = req.body.options.filter(op => op.length && op.length > 0);
+        // var insert_objects = good_options.map(op => ({text: op, votes: 0, poll_id: data[0].id}))
+        // knex('option')
+        // .returning('*')
+        // .insert(insert_objects)
 
         var insert_promises = [];
         for (let i = 0; i < req.body.options.length; i++) {
@@ -103,21 +103,20 @@ app.post('/create', (req, res) => {
         console.log('y tho', err);
         res.redirect('./');
       });
-    // }
-
-    var data = {
-      from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
-      to: req.body.email,
-      subject: 'Thank you for using Decision Maker!',
-      text: `Your poll, ${
-        req.body.title
-      }, has been created. \n\nHere is the link to your results: localhost:8080/${randomURL}/admin \n\nHere is the shareable link to your poll: localhost:8080/${randomURL}`
-    };
-
-    mailgun.messages().send(data, function(error, body) {
-      console.log(body);
-    });
   }
+
+  var data = {
+    from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+    to: req.body.email,
+    subject: 'Thank you for using Decision Maker!',
+    text: `Your poll, ${
+      req.body.title
+    }, has been created. \n\nHere is the link to your results: localhost:8080/${randomURL}/admin \n\nHere is the shareable link to your poll: localhost:8080/${randomURL}`
+  };
+
+  mailgun.messages().send(data, function(error, body) {
+    console.log(body);
+  });
 });
 
 app.get('/admin/:id', (req, res) => {
@@ -188,22 +187,25 @@ app.post('/vote', (req, res) => {
         .where('poll.url', 'like', randomURL)
     );
   })
-  .then((data) => {
-    //loop through new data and increment columns
-    const votePromise = [];
-    for(let i = 0; i < data.length; i ++){
-      votePromise.push(
-      knex('option')
-        .returning('*')
-        .where({text: options[i], poll_id: data[i].id })
-        .increment('votes', options.length - i));
-    }
-    // console.log(Promise.all(votePromise));
-    Promise.all(votePromise)
-    .then((data) => {
-      res.json({result: "True"});
-    }).catch(err =>{
-      console.log("what's this err", err);
+    .then(data => {
+      //loop through new data and increment columns
+      const votePromise = [];
+      for (let i = 0; i < data.length; i++) {
+        votePromise.push(
+          knex('option')
+            .returning('*')
+            .where({ text: options[i], poll_id: data[i].id })
+            .increment('votes', options.length - i)
+        );
+      }
+      // console.log(Promise.all(votePromise));
+      Promise.all(votePromise)
+        .then(data => {
+          res.json({ result: 'True' });
+        })
+        .catch(err => {
+          console.log("what's this err", err);
+        });
     })
     .catch(err => {
       console.log('WHHHHY', err);
@@ -212,4 +214,4 @@ app.post('/vote', (req, res) => {
 
 app.get('/thanks', (req, res) => {
   res.render('thanks');
-})
+});
