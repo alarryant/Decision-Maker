@@ -94,7 +94,7 @@ app.post('/create', (req, res) => {
 
       Promise.all(insert_promises)
       .then((data) => {
-        res.redirect(`/${randomURL}/admin`);
+        res.redirect(`/admin/${randomURL}`);
       }).catch(err => {
         console.log("y tho", err);
         res.redirect('./');
@@ -118,11 +118,10 @@ app.post('/create', (req, res) => {
   mailgun.messages().send(data, function (error, body) {
     console.log(body);
   });
-  res.redirect(`/${randomURL}/admin`);
 
 });
 
-app.get('/:id/admin', (req, res) => {
+app.get('/admin/:id', (req, res) => {
   let randomURL = req.params.id;
   knex.select('text', 'poll.name')
     .from('option')
@@ -192,10 +191,6 @@ app.post('/vote', (req, res) => {
 
 });
 
-app.get('/create', (req, res) => {
-  console.log('wtf');
-  res.redirect('./');
-});
 
 
 
