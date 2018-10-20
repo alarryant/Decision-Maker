@@ -1,14 +1,4 @@
 $(() => {
-  $.ajax({
-    method: 'GET',
-    url: '/api/users'
-  }).done(users => {
-    for (user of users) {
-      $('<div>')
-        .text(user.name)
-        .appendTo($('body'));
-    }
-  });
 
   function resetCounter() {
     $('label.counterText').each(function(indivCounterText, val) {
@@ -83,7 +73,19 @@ $(() => {
    $('li').each(function(idx, li) {
      optionArray.push($(li).context.innerText);
     });
-    $.post("/vote", {option: optionArray, randomURL: randomURL});
+    // $.post("/vote", {option: optionArray, randomURL: randomURL});
+    $.ajax({
+      url: '/api/users/vote',
+      type: 'POST',
+      data: {option: optionArray, randomURL: randomURL},
+      success:function(result){
+        console.log("we are good in the succcess function",result);
+        window.location = "/api/users/thanks";
+      },
+      error: function(error){
+        console.log("we are in the error code");
+      }
+    }); //AJAX Call ends here.
   });
 
   // $("form").on('click', '#create', (function(event) {
