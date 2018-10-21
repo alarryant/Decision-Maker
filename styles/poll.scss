@@ -6,16 +6,32 @@
   padding-top: 0px;
   padding-left: 50px;
   text-align: center;
-}
-header {
-  font-size: 6em;
-}
-h1 {
-  font-size: 4em;
-}
-.poll_container_box {
-  width: 800px;
-  background-color: #fefcde;
-  border-radius: 20px;
-  height: 800px;
+
+  header {
+    font-size: 6em;
+  }
+  .poll_title {
+    font-size: 4em;
+  }
+
+  ul {
+    list-style: none;
+  }
+  .poll_results {
+    background-color: blue;
+    font-size: 3em;
+    // width: 50px;
+    border-radius: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 760px;
+    height: 48px;
+  }
+
+  .poll_container_box {
+    width: 800px;
+    background-color: #fefcde;
+    border-radius: 20px;
+    height: 800px;
+  }
 }
