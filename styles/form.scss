@@ -1,64 +1,54 @@
-  #create {
-    display: inline-block;
-    width: 120px;
-    height: 70px;
-    border-radius: 10px;
-    border-color: white;
-    font-family: 'VT323', monospace;
-    font-size: 1.25em;
-    position: relative;
-    float: right;
-    margin: 7px 353px 0px 0px;
-  }
-
-  #addOption {
-    display: inline-block;
-    border-radius: 10px;
-    width: 120px;
-    height: 70px;
-    font-family: 'VT323', monospace;
-    font-size: 1.25em;
-    position: relative;
-    float: left;
-    margin: 25px 0px 0px 25px;
-  }
-
+#create {
+  display: inline-block;
+  width: 120px;
+  height: 70px;
+  border-radius: 10px;
+  border-color: white;
+  font-family: 'VT323', monospace;
+  font-size: 1.25em;
+  position: relative;
+  float: right;
+  margin: 7px 353px 0px 0px;
+}
+#addOption {
+  display: inline-block;
+  border-radius: 10px;
+  width: 120px;
+  height: 70px;
+  font-family: 'VT323', monospace;
+  font-size: 1.25em;
+  position: relative;
+  float: left;
+  margin: 25px 0px 0px 25px;
+}
 form {
-
   h3 {
     margin-left: 80px;
     margin-bottom: 70px;
     color: #34444d;
     font-size: 3em;
-    font-family: 'VT323', monospace;
   }
 }
-
 .test.option3 {
-    height: 235px;
-  }
-
+  height: 235px;
+}
 .test.option4 {
-    height: 275px;
-  }
-
+  height: 275px;
+}
 .test.option5 {
-    height: 310px;
-  }
-
-
+  height: 310px;
+}
 .test {
   width: 450px;
   background-color: #fefcde;
   border-radius: 20px;
   height: 200px;
-
   label {
     width: 110px;
     float: left;
     font-size: 1.5em;
     color: #34444d;
-    padding: 2px;
+    padding: 1px;
     letter-spacing: 1px;
     margin: 5px;
     font-weight: bold;
