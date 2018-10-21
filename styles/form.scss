@@ -1,33 +1,33 @@
-  #create {
-    display: inline-block;
-    width: 120px;
-    height: 70px;
-    border-radius: 10px;
-    border-color: white;
-    font-family: 'VT323', monospace;
-    font-size: 1.25em;
-    position: relative;
-    float: right;
-    margin: 7px 353px 0px 0px;
-    opacity: 1;
-          &:hover {
-        opacity: 0.7;
-    }
+#create {
+  display: inline-block;
+  width: 120px;
+  height: 70px;
+  border-radius: 10px;
+  border-color: white;
+  font-family: 'VT323', monospace;
+  font-size: 1.25em;
+  position: relative;
+  float: right;
+  margin: 7px 353px 0px 0px;
+  opacity: 1;
+  &:hover {
+    opacity: 0.7;
   }
+}
 
-  #addOption {
-    display: inline-block;
-    border-radius: 10px;
-    width: 120px;
-    height: 70px;
-    font-family: 'VT323', monospace;
-    font-size: 1.25em;
-    position: relative;
-    float: left;
-    margin: 25px 0px 0px 25px;
-    opacity: 1;
-      &:hover {
-        opacity: 0.7;
+#addOption {
+  display: inline-block;
+  border-radius: 10px;
+  width: 120px;
+  height: 70px;
+  font-family: 'VT323', monospace;
+  font-size: 1.25em;
+  position: relative;
+  float: left;
+  margin: 25px 0px 0px 25px;
+  opacity: 1;
+  &:hover {
+    opacity: 0.7;
   }
 }
 
@@ -46,12 +46,8 @@ form {
   height: 275px;
 }
 .test.option5 {
-<<<<<<< HEAD
   height: 310px;
 }
-=======
-    height: 310px;
-  }
 
 input {
   width: 280px;
@@ -63,19 +59,15 @@ input {
   opacity: 0.7;
 }
 
->>>>>>> master
 .test {
   width: 510px;
   background-color: #fefcde;
   border-radius: 20px;
   height: 200px;
-<<<<<<< HEAD
-=======
   padding-top: 7px;
   padding-left: 10px;
   padding-right: 30px;
 
->>>>>>> master
   label {
     width: 110px;
     float: left;
@@ -85,7 +77,6 @@ input {
     letter-spacing: 1px;
     margin: 5px;
     font-weight: bold;
-    font-family: 'VT323', monospace;
   }
 
   .delete {
