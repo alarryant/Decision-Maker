@@ -24,7 +24,7 @@
     font-size: 1.25em;
     position: relative;
     float: left;
-    margin: 25px 0px 0px 57px;
+    margin: 22px 0px 0px 57px;
     opacity: 1;
       &:hover {
         opacity: 0.7;
@@ -53,15 +53,6 @@ form {
   height: 310px;
 }
 
-input {
-  width: 280px;
-  display: inline-block;
-  border-radius: 4px;
-  border-color: white;
-  padding: 5px;
-  margin: 5px 15px 5px 25px;
-  opacity: 0.7;
-}
 .test {
   width: 510px;
   background-color: #fefcde;
@@ -70,14 +61,24 @@ input {
   padding-top: 7px;
   padding-left: 10px;
   padding-right: 30px;
+
+  input {
+    width: 280px;
+    display: inline-block;
+    border-radius: 4px;
+    border-color: white;
+    opacity: 0.7;
+    font-size: 1.25em;
+    margin: 5px 15px 5px 0px;
+  }
+
   label {
     width: 110px;
     float: left;
-    font-size: 1.5em;
+    font-size: 1.25em;
     color: #34444d;
-    padding: 1px;
     letter-spacing: 1px;
-    margin: 5px;
+    margin: 5px 15px 5px 15px;
     font-weight: bold;
     font-family: 'VT323', monospace;
   }
