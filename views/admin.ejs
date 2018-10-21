@@ -23,8 +23,11 @@
         <% };%>
       </ol>
 
-      <h5>This is the voting <a href="/api/users/user/<%=randomURL%>">link</a></h5>
-      <a href="#" class="fb-share">Share on Facebook</a>
+      <h5>Share the voting link with your friends:</h5><br>
+      <textarea class="clipboard">localhost:8080/api/users/user/<%=randomURL%></textarea>
+      <span class="clipboardbutton"><i class="fas fa-clipboard"></i></span>
+      <p>Copied to clipboard.</p><br>
+      <a href="#" class="fb-share"><i class="fab fa-facebook-square"></i></a>
       <div id="fb-root"></div>
     </a>
   </main>

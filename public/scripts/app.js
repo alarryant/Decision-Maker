@@ -167,4 +167,13 @@ $(() => {
       description: ''
     });
   });
+
+  $('.results').on('click', '.clipboardbutton', function(event) {
+    event.preventDefault();
+    $textarea = $(event.target).parent().prev();
+    $textarea.select();
+    document.execCommand('copy');
+    $textarea.blur();
+    $(event.target).parent().next().addClass("postcopied");
+  });
 });
