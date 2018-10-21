@@ -14,39 +14,45 @@
     opacity: 0.7;
   }
 }
-#addOption {
-  display: inline-block;
-  border-radius: 10px;
-  width: 120px;
-  height: 70px;
-  font-family: 'VT323', monospace;
-  font-size: 1.25em;
-  position: relative;
-  float: left;
-  margin: 25px 0px 0px 25px;
-  opacity: 1;
-  &:hover {
-    opacity: 0.7;
+
+  #addOption {
+    display: inline-block;
+    border-radius: 10px;
+    width: 120px;
+    height: 70px;
+    font-family: 'VT323', monospace;
+    font-size: 1.25em;
+    position: relative;
+    float: left;
+    margin: 25px 0px 0px 57px;
+    opacity: 1;
+      &:hover {
+        opacity: 0.7;
   }
 }
+
 form {
   h3 {
-    margin-left: 80px;
+    margin-left: 112px;
     margin-bottom: 70px;
     color: #34444d;
     font-size: 3em;
     font-family: 'VT323', monospace;
   }
 }
+
 .test.option3 {
   height: 235px;
 }
+
 .test.option4 {
   height: 275px;
 }
+
 .test.option5 {
   height: 310px;
 }
+
 input {
   width: 280px;
   display: inline-block;
