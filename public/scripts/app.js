@@ -39,7 +39,7 @@ $(() => {
 
   $('#addOption').click(function(event) {
     event.preventDefault();
-    if (counter <= 4) {
+    if (counter < 4) {
       counter++;
       $('<label>')
         .attr('for', 'options')
@@ -56,46 +56,58 @@ $(() => {
         .attr('class', 'delete')
         .appendTo($('.test'));
       $('<br>').appendTo($('.test'));
-      if (counter === 3) {
-        $('.test')
-          .addClass('option3')
-          .addClass('options');
+        if (counter === 3) {
+          $('.test')
+            .addClass('option3')
+            .addClass('options');
+        } else if (counter === 4) {
+          $('.test')
+            .removeClass('option3')
+            .addClass('option4');
+        }
       } else if (counter === 4) {
-        $('.test')
-          .removeClass('option3')
-          .addClass('option4');
-      } else if (counter === 5) {
-        $('.test')
-          .removeClass('option4')
-          .addClass('option5');
+        counter++;
+      $('<label>')
+        .attr('for', 'options')
+        .attr('class', 'counterText')
+        .text(`Option ${counter}: `)
+        .appendTo($('.test'));
+      $('<input>')
+        .attr('type', 'text')
+        .attr('name', 'options')
+        .appendTo($('.test'))
+        .focus();
+      $('<button><i class="far fa-trash-alt"></i></button>')
+        .attr('class', 'delete')
+        .appendTo($('.test'));
+      $('<br>').appendTo($('.test'));
+      $('.test')
+        .removeClass('option4')
+        .addClass('option5');
+      $('#addOption').addClass("hidedelete");
       }
-    } else {
-      // implement later with css
-      $('<br><span>')
-        .attr('class', 'removeError')
-        .text(`Let's be real you don't have that many things to do. Let's limit it to 5.`)
-        .appendTo($('form'));
-    }
   });
 
   $('form').on('click', '.delete', function(event) {
     event.preventDefault();
-    const $clickTarget = $(event.target).parent();
+    const $clickTarget = $(event.target).parent('button');
     $clickTarget.next().remove();
     $clickTarget.prev().remove();
     $clickTarget.prev().remove();
     $clickTarget.remove();
-    $('.removeError').remove();
     if ($('.test').hasClass('option5')) {
       $('.test')
         .removeClass('option5')
         .addClass('option4');
+      $('#addOption').removeClass("hidedelete");
     } else if ($('.test').hasClass('option4')) {
       $('.test')
         .removeClass('option4')
         .addClass('option3');
+      $('#addOption').removeClass("hidedelete");
     } else if ($('.test').hasClass('option3')) {
       $('.test').removeClass('option3');
+      $('#addOption').removeClass("hidedelete");
     }
     resetCounter();
     counter--;
@@ -154,7 +166,7 @@ $(() => {
     if (email === '' && title === '') {
       e.preventDefault();
       $('.error')
-        .text('You have to create a poll first!')
+        .text('Please complete the form first!')
         .hide();
       $('.error').slideDown('slow');
     } else if (email === '') {
@@ -166,7 +178,7 @@ $(() => {
     } else if (title === '') {
       e.preventDefault();
       $('.error')
-        .text('Please enter a valid Title before submitting!')
+        .text('Please enter a valid title before submitting!')
         .hide();
       $('.error').slideDown('slow');
     } else if (opArr.every(element => element === '')){

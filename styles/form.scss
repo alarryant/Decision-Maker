@@ -12,6 +12,7 @@
   opacity: 1;
   &:hover {
     opacity: 0.7;
+    background-color: #ecdada;
   }
 }
 
@@ -28,12 +29,18 @@
     opacity: 1;
       &:hover {
         opacity: 0.7;
+        background-color: #ecdada;
   }
+}
+
+#addOption.hidedelete {
+  display: none;
 }
 
 form {
 
   .error {
+  width: 400px;
     position: absolute;
     margin-bottom: 25px;
     background-color: #f58c8c;
@@ -43,7 +50,8 @@ form {
     border-radius: 5px;
     font-size: 1.25em;
     display: none;
-    margin-left: 115px;
+    text-align: center;
+    margin-left: 55px;
   }
 
   h3 {
