@@ -181,10 +181,10 @@ $(() => {
         .text('Please enter a valid title before submitting!')
         .hide();
       $('.error').slideDown('slow');
-    } else if (opArr.every(element => element === '')){
+    } else if (opArr.every(element => element === '') || opArr.filter(word => word).length === 1){
       e.preventDefault();
       $('.error')
-        .text('You must submit some options!')
+        .text('You must have at least 2 options!')
         .hide();
       $('.error').slideDown('slow');
     } else if (opLen.some(tooMany)) {
