@@ -49,7 +49,8 @@ $(() => {
       $('<input>')
         .attr('type', 'text')
         .attr('name', 'options')
-        .appendTo($('.test'));
+        .appendTo($('.test'))
+        .focus();
       $('<button><i class="far fa-trash-alt"></i></button>')
         .attr('class', 'delete')
         .appendTo($('.test'));
@@ -170,10 +171,12 @@ $(() => {
 
   $('.results').on('click', '.clipboardbutton', function(event) {
     event.preventDefault();
+    $(event.target).parent().next().slideUp();
     $textarea = $(event.target).parent().prev();
     $textarea.select();
     document.execCommand('copy');
     $textarea.blur();
-    $(event.target).parent().next().addClass("postcopied");
+    $(event.target).parent().next().slideDown(800).delay(2000);
+    $(event.target).parent().next().slideUp(800);
   });
 });

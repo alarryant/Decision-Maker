@@ -10,11 +10,10 @@
   <% include partials/_header %>
   <main class="admincontainer">
     <div class="results">
-      <h1>Admin Page</h1>
+      <h1 class="pagetitle">Admin and Results</h1>
       <h1 class="polltitle">
         <%= options[0].name %>
       </h1>
-      <h3>Results here:</h3>
       <ol>
         <% for (let i = 0; i < options.length; i++) {%>
         <li>
@@ -23,10 +22,10 @@
         <% };%>
       </ol>
 
-      <h5>Share the voting link with your friends:</h5><br>
-      <textarea class="clipboard">localhost:8080/api/users/user/<%=randomURL%></textarea>
+      <h5>Share the voting link<br>with your friends:</h5><br>
+      <textarea readonly class="clipboard">localhost:8080/api/users/user/<%=randomURL%></textarea>
       <span class="clipboardbutton"><i class="fas fa-clipboard"></i></span>
-      <p>Copied to clipboard.</p><br>
+      <p class="postcopied">Copied to clipboard.</p><br>
       <a href="#" class="fb-share"><i class="fab fa-facebook-square"></i></a>
       <div id="fb-root"></div>
     </a>
