@@ -18,15 +18,15 @@ module.exports = knex => {
     let randomURL = req.params.id;
 
     knex
-      .select('option.text', 'poll.name', 'poll.description')
+      .select('option.text', 'poll.name')
       .from('option')
       .join('poll', 'poll_id', '=', 'poll.id')
-      .where('poll.url', 'like', randomURL)
+      .where('poll.url', 'like', `%${randomURL}%`)
       .asCallback((err, option) => {
         if (err) throw err;
         let templateVars = {
           option,
-          randomURL,
+          randomURL
         };
         res.render('poll', templateVars);
       });
@@ -35,7 +35,6 @@ module.exports = knex => {
   router.post('/create', (req, res) => {
     const randomURL = functions.generateRandomString();
 
-    console.log(req.body);
     if (req.body.email === '' || req.body.title === '' || req.body.options[0] === '') {
       res.status(400).json({ error: 'invalid request: no data in POST body' });
       return;
@@ -97,14 +96,13 @@ module.exports = knex => {
   router.get('/admin/:id', (req, res) => {
     let randomURL = req.params.id;
     knex
-      .select('text', 'poll.name', 'poll.description')
+      .select('text', 'poll.name')
       .from('option')
       .join('poll', 'poll_id', '=', 'poll.id')
-      .where('poll.url', '=', randomURL)
+      .where('poll.url', 'like', `%${randomURL}%`)
       // orders from highest votes to lowest
       .orderBy('option.votes', 'desc')
       .asCallback((err, options) => {
-        console.log('options', options);
         if (err) throw err;
         // passing through options with option text and title of poll to admin page
         let templateVars = {
@@ -119,37 +117,29 @@ module.exports = knex => {
     let options = req.body.option;
     let randomURL = req.body.randomURL;
 
-  knex('poll').select('email', 'name').where('url', '=', randomURL).then((info) => {
-    var data = {
-      from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
-      to: `${info[0].email}`,
-      subject: `Someone just voted in this poll: ${info[0].name}!`,
-      text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
-    };
-    mailgun.messages().send(data, function (error, body) {
-      if (error) throw error;
-    })
-  });
+    knex('poll')
+      .select('email', 'name')
+      .where('url', '=', randomURL)
+      .then(info => {
+        var data = {
+          from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+          to: `${info[0].email}`,
+          subject: `Someone just voted in this poll: ${info[0].name}!`,
+          text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
+        };
+        mailgun.messages().send(data, function(error, body) {
+          console.log(body);
+        });
+      });
 
-  // store in promise new array of data to access later
-  return new Promise((resolve,reject) => {
-  resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', `%${randomURL}%`))
-  })
-  .then((data) => {
-    //loop through new data and increment columns
-    const votePromise = [];
-    for(let i = 0; i < data.length; i ++){
-      votePromise.push(
-      knex('option')
-        .returning('*')
-        .where({text: options[i], poll_id: data[i].id })
-        .increment('votes', options.length - i));
-    }
-    Promise.all(votePromise)
-    .then((data) => {
-      res.json({result: "True"});
-    }).catch(err =>{
-      console.log("what's this err", err);
+    // store in promise new array of data to access later
+    return new Promise((resolve, reject) => {
+      resolve(
+        knex
+          .from('option')
+          .join('poll', 'poll_id', 'poll.id')
+          .where('poll.url', 'like', `%${randomURL}%`)
+      );
     })
       .then(data => {
         //loop through new data and increment columns
@@ -162,7 +152,6 @@ module.exports = knex => {
               .increment('votes', options.length - i)
           );
         }
-        // console.log(Promise.all(votePromise));
         Promise.all(votePromise)
           .then(data => {
             res.json({ result: 'True' });

@@ -120,7 +120,7 @@ $(() => {
   $('.vote').on('click', function(event) {
     event.preventDefault();
     let $headerString = $(event.target).parent().siblings('#pollid');
-    let randomURL = $headerString.text();
+    let randomURL = $headerString.text().trim();
     let optionArray = [];
     $('li').each(function(idx, li) {
       optionArray.push($(li).context.innerText);
