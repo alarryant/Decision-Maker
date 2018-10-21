@@ -49,6 +49,7 @@ $(() => {
       $('<input>')
         .attr('type', 'text')
         .attr('name', 'options')
+        .addClass('charlim')
         .appendTo($('.test'))
         .focus();
       $('<button><i class="far fa-trash-alt"></i></button>')
@@ -148,6 +149,20 @@ $(() => {
       .children('div')
       .children('#title')
       .val();
+      // e.preventDefault();
+      let opArr = [];
+      let opLen = [];
+
+      function tooMany(element){
+        return element > 100;
+      }
+
+      $(e.target).children('div').children('.charlim').each((idx, li) => { opArr.push(($(li).val()))});
+      opArr.forEach((element) => {
+        opLen.push(element.length);
+      })
+      console.log(opLen);
+
     if (email === '' && title === '') {
       e.preventDefault();
       $('.error')
@@ -166,8 +181,20 @@ $(() => {
         .text('Please enter a valid title before submitting!')
         .hide();
       $('.error').slideDown('slow');
+    } else if (opArr.every(element => element === '')){
+      e.preventDefault();
+      $('.error')
+        .text('You must submit some options!')
+        .hide();
+      $('.error').slideDown('slow');
+    } else if (opLen.some(tooMany)) {
+      e.preventDefault();
+      $('.error')
+        .text('Character length on option is 100!')
+        .hide();
+      $('.error').slideDown('slow');
     } else {
-      $.ajax('/api/users/create', { method: 'POST', data: data });
+      $.ajax('/api/users/create', { method: 'POST'});
     }
   });
 
