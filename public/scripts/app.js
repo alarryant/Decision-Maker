@@ -22,8 +22,9 @@ $(() => {
 
   $(function() {
     $('.header').hover(function() {
-      $(this).toggleClass('active');
+      // $(this).toggleClass('active');
       $('#navbar').toggle('slide', { direction: 'right' }, 2000);
+      // ;
     });
   });
 
