@@ -2,17 +2,19 @@
       position: fixed;
       height: 150px;
       width: 100%;
+      margin: auto;
       background: url(../images/Navbar2.png);
       background-color: white;
       top: 0px;
       z-index: 99998;
-      opacity: 1;
+      opacity: 0;
       &:hover {
-        opacity: 0;
+        opacity: 1;
       }
     }
 
 .header {
+    position: relative;
     opacity: 1;
     width: 100%;
     display: inline-block;
@@ -38,7 +40,7 @@ html {
       background: url('../images/subway2.png');
       background-color: #ecdada;
       padding-top: 85px;
-      padding-left: 325px;
+      padding-left: 295px;
     }
   }
 }
