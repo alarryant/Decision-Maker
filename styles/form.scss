@@ -32,6 +32,20 @@
 }
 
 form {
+
+  .error {
+    position: absolute;
+    margin-bottom: 25px;
+    background-color: #f58c8c;
+    color: white;
+    top: 357px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 1.25em;
+    display: none;
+    margin-left: 115px;
+  }
+
   h3 {
     margin-left: 112px;
     margin-bottom: 70px;
