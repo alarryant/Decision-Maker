@@ -1,5 +1,5 @@
-$blue: #9fdcdf;
-$grey: rgb(87, 84, 87);
+$blue: #b1d1db;
+$grey: #858788;
 
 .poll_container {
   margin: auto;
@@ -10,18 +10,22 @@ $grey: rgb(87, 84, 87);
   flex-direction: column;
   position: relative;
   align-items: center;
-
   text-align: center;
+
   .poll_container_box {
     width: 800px;
-    background-color: #fefcde;
     border-radius: 20px;
     height: 800px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 50px 150px 200px 150px;
+    padding: 50px 75px 200px 325px;
     align-items: center;
+    background: url(../images/conductorleftside.png);
+    background-color: #fefcde;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
   }
 
   header {
@@ -30,6 +34,7 @@ $grey: rgb(87, 84, 87);
   }
   .poll_title {
     font-size: 4em;
+    text-transform: capitalize;
   }
   .description {
     font-size: 25px;
@@ -38,8 +43,9 @@ $grey: rgb(87, 84, 87);
   }
   .poll_instruction {
     color: $grey;
-    margin-top: 50px;
-    font-size: 19px;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    font-size: 2em;
   }
   ul {
     list-style: none;
@@ -47,7 +53,7 @@ $grey: rgb(87, 84, 87);
     margin-top: 5px;
     padding-left: 0px;
     li {
-      font-size: 3em;
+      font-size: 2.5em;
       margin: auto;
       margin-top: 2px;
       margin-bottom: 2px;
