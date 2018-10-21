@@ -14,7 +14,6 @@
     opacity: 0.7;
   }
 }
-
 #addOption {
   display: inline-block;
   border-radius: 10px;
@@ -30,13 +29,13 @@
     opacity: 0.7;
   }
 }
-
 form {
   h3 {
     margin-left: 80px;
     margin-bottom: 70px;
     color: #34444d;
     font-size: 3em;
+    font-family: 'VT323', monospace;
   }
 }
 .test.option3 {
@@ -48,7 +47,6 @@ form {
 .test.option5 {
   height: 310px;
 }
-
 input {
   width: 280px;
   display: inline-block;
@@ -58,7 +56,6 @@ input {
   margin: 5px 15px 5px 25px;
   opacity: 0.7;
 }
-
 .test {
   width: 510px;
   background-color: #fefcde;
@@ -67,7 +64,6 @@ input {
   padding-top: 7px;
   padding-left: 10px;
   padding-right: 30px;
-
   label {
     width: 110px;
     float: left;
@@ -77,8 +73,8 @@ input {
     letter-spacing: 1px;
     margin: 5px;
     font-weight: bold;
+    font-family: 'VT323', monospace;
   }
-
   .delete {
     background: none;
     border: none;
