@@ -38,7 +38,8 @@ module.exports = (knex) => {
 
   console.log(req.body);
   if(req.body.email === '' || req.body.title === '' || req.body.options[0] === ''){
-    res.redirect('/');
+    res.status(400).json({ error: 'invalid request: no data in POST body'});
+      return;
   } else {
   //inserting poll table into database
     knex('poll')

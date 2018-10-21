@@ -88,16 +88,27 @@ $(() => {
     }); //AJAX Call ends here.
   });
 
-  // $("form").on('click', '#create', (function(event) {
-  //   event.preventDefault();
-  //   $('input').each(function(field) => {
-  //     if (!field) {
-  //       $('.error-message')
-  //         .text('fill in all forms u idiot')
-  //         .slideDown();
-  //     } else {
-  //       $('.error-message').slideUp();
-  //     }
-  //   });
-  // });
+
+$(".required").on('submit', e => {
+  let email = $(e.target).children('div').children('#email').val();
+  let title = $(e.target).children('div').children('#title').val();
+  if(email === '' && title === '') {
+    e.preventDefault();
+    $('.error').text("You have to create a poll first!").hide();
+    $('.error').slideDown("slow");
+  } else if(email === '') {
+      e.preventDefault();
+      $('.error').text("Please enter a valid email before submitting!").hide();
+      $('.error').slideDown("slow");
+  } else if (title === '') {
+      e.preventDefault();
+      $('.error').text("Please enter a valid Title before submitting!").hide();
+      $('.error').slideDown("slow");
+  } else {
+      $.ajax('/api/users/create', {method: 'POST', data: data});
+
+  }
+
+})
+
 });
