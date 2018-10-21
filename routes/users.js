@@ -23,7 +23,7 @@ module.exports = (knex) => {
       .select('option.text', 'poll.name')
       .from('option')
       .join('poll', 'poll_id', '=', 'poll.id')
-      .where('poll.url', 'like', randomURL)
+      .where('poll.url', 'like', `%${randomURL}%`)
       .asCallback((err, option) => {
         if (err) throw (err);
         let templateVars = {
@@ -91,7 +91,7 @@ module.exports = (knex) => {
     };
 
     mailgun.messages().send(data, function (error, body) {
-      if (error) throw error;
+      console.log(body);
     });
 
   });
@@ -101,7 +101,7 @@ module.exports = (knex) => {
     knex.select('text', 'poll.name')
       .from('option')
       .join('poll', 'poll_id', '=', 'poll.id')
-      .where('poll.url', '=', randomURL)
+      .where('poll.url', 'like', `%${randomURL}%`)
       // orders from highest votes to lowest
       .orderBy('option.votes', 'desc')
       .asCallback((err, options) => {
@@ -127,7 +127,7 @@ module.exports = (knex) => {
       text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
     };
     mailgun.messages().send(data, function (error, body) {
-      if (error) throw error;
+      console.log(body);
     })
   });
 
