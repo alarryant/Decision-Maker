@@ -17,17 +17,18 @@ module.exports = (knex) => {
   })
 
   router.get('/user/:id', (req, res) => {
+    let randomURL = req.params.id;
 
     knex
       .select('option.text', 'poll.name')
       .from('option')
       .join('poll', 'poll_id', '=', 'poll.id')
-      .where('poll.url', 'like', req.params.id)
+      .where('poll.url', 'like', randomURL)
       .asCallback((err, option) => {
         if (err) throw (err);
         let templateVars = {
           option,
-          randomURL: req.params.id
+          randomURL,
         };
         res.render('poll', templateVars);
       });
@@ -36,7 +37,6 @@ module.exports = (knex) => {
   router.post('/create', (req, res) => {
   const randomURL = functions.generateRandomString();
 
-  console.log(req.body);
   if(req.body.email === '' || req.body.title === '' || req.body.options[0] === ''){
     res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
@@ -57,7 +57,7 @@ module.exports = (knex) => {
       for (let i = 0; i < req.body.options.length; i ++){
         var option_text = req.body.options[i];
         if(option_text === '') {
-          console.log("WHAt")
+          console.log("WHAt");
         } else {
           insert_promises.push(
             knex('option')
@@ -91,7 +91,7 @@ module.exports = (knex) => {
     };
 
     mailgun.messages().send(data, function (error, body) {
-      console.log(body);
+      if (error) throw error;
     });
 
   });
@@ -127,13 +127,13 @@ module.exports = (knex) => {
       text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
     };
     mailgun.messages().send(data, function (error, body) {
-      // console.log(body);
+      if (error) throw error;
     })
   });
 
   // store in promise new array of data to access later
   return new Promise((resolve,reject) => {
-  resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', randomURL))
+  resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', `%${randomURL}%`))
   })
   .then((data) => {
     //loop through new data and increment columns
@@ -145,7 +145,6 @@ module.exports = (knex) => {
         .where({text: options[i], poll_id: data[i].id })
         .increment('votes', options.length - i));
     }
-    // console.log(Promise.all(votePromise));
     Promise.all(votePromise)
     .then((data) => {
       res.json({result: "True"});

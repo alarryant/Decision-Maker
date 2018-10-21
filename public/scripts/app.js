@@ -119,13 +119,12 @@ $(() => {
 
   $('.vote').on('click', function(event) {
     event.preventDefault();
-    let $headerString = $(event.target).siblings('#pollid');
+    let $headerString = $(event.target).parent().siblings('#pollid');
     let randomURL = $headerString.text();
     let optionArray = [];
     $('li').each(function(idx, li) {
       optionArray.push($(li).context.innerText);
     });
-    // $.post("/vote", {option: optionArray, randomURL: randomURL});
     $.ajax({
       url: '/api/users/vote',
       type: 'POST',
