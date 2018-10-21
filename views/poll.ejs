@@ -9,22 +9,37 @@
 <body>
   <% include partials/_header %>
   <main class="poll_container">
-    <h1>Cast Your Vote</h1>
-    </div>
+    <header>
+      Conduct Your Vote!
+    </header>
     <div class="poll_container_box">
-      <div class=<h1>Poll:
+      <div class="poll_title">
+        Poll:
         <%= Object.values(option[0])[1]%>
-        </h1>
-        <ul id="sortable-1">
-          <% for (i = 0; i < option.length; i++) {%>
-          <li class="default">
-            <%= Object.values(option[i])[0] %>
-          </li>
-          <% };%>
-        </ul>
-        <button class="vote" type="submit"> Sumbit </button>
       </div>
-        <h5 id="pollid">
+      <div class="description">
+        <%= Object.values(option[0])[2]%>
+      </div>
+      <div class=poll_instruction>
+        drag and drop the options to order your preference!
+      </div>
+      <ul id="sortable-1">
+
+        <% for (i = 0; i < option.length; i++) {%>
+
+        <li class="default">
+          <%= Object.values(option[i])[0] %>
+        </li>
+        <% };%>
+
+      </ul>
+
+      <button class="vote" type="submit"> Submit </button>
+
+    </div>
+  </main>
+
+  <h5 hidden id="pollid">
     <%=randomURL%>
   </h5>
   </main>
