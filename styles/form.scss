@@ -1,38 +1,35 @@
-  #create {
-    display: inline-block;
-    width: 120px;
-    height: 70px;
-    border-radius: 10px;
-    border-color: white;
-    font-family: 'VT323', monospace;
-    font-size: 1.25em;
-    position: relative;
-    float: right;
-    margin: 7px 353px 0px 0px;
-    opacity: 1;
-          &:hover {
-        opacity: 0.7;
-    }
-  }
-
-  #addOption {
-    display: inline-block;
-    border-radius: 10px;
-    width: 120px;
-    height: 70px;
-    font-family: 'VT323', monospace;
-    font-size: 1.25em;
-    position: relative;
-    float: left;
-    margin: 25px 0px 0px 25px;
-    opacity: 1;
-      &:hover {
-        opacity: 0.7;
+#create {
+  display: inline-block;
+  width: 120px;
+  height: 70px;
+  border-radius: 10px;
+  border-color: white;
+  font-family: 'VT323', monospace;
+  font-size: 1.25em;
+  position: relative;
+  float: right;
+  margin: 7px 353px 0px 0px;
+  opacity: 1;
+  &:hover {
+    opacity: 0.7;
   }
 }
-
+#addOption {
+  display: inline-block;
+  border-radius: 10px;
+  width: 120px;
+  height: 70px;
+  font-family: 'VT323', monospace;
+  font-size: 1.25em;
+  position: relative;
+  float: left;
+  margin: 25px 0px 0px 25px;
+  opacity: 1;
+  &:hover {
+    opacity: 0.7;
+  }
+}
 form {
-
   h3 {
     margin-left: 80px;
     margin-bottom: 70px;
@@ -41,19 +38,15 @@ form {
     font-family: 'VT323', monospace;
   }
 }
-
 .test.option3 {
-    height: 235px;
-  }
-
+  height: 235px;
+}
 .test.option4 {
-    height: 275px;
-  }
-
+  height: 275px;
+}
 .test.option5 {
-    height: 310px;
-  }
-
+  height: 310px;
+}
 input {
   width: 280px;
   display: inline-block;
@@ -63,7 +56,6 @@ input {
   margin: 5px 15px 5px 25px;
   opacity: 0.7;
 }
-
 .test {
   width: 510px;
   background-color: #fefcde;
@@ -72,7 +64,6 @@ input {
   padding-top: 7px;
   padding-left: 10px;
   padding-right: 30px;
-
   label {
     width: 110px;
     float: left;
@@ -84,7 +75,6 @@ input {
     font-weight: bold;
     font-family: 'VT323', monospace;
   }
-
   .delete {
     background: none;
     border: none;
