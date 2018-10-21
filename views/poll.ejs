@@ -20,12 +20,12 @@
 
       <ul id="sortable-1">
         <% for (i = 0; i < option.length; i++) {%>
-        <div class="poll_results">
-          <li class="default">
-            <%= Object.values(option[i])[0] %>
-          </li>
-          <% };%>
-        </div>
+
+        <li class="default">
+          <%= Object.values(option[i])[0] %>
+        </li>
+        <% };%>
+
       </ul>
 
       <button class="vote" type="submit"> Sumbit </button>
