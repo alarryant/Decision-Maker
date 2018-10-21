@@ -39,7 +39,7 @@ $(() => {
 
   $('#addOption').click(function(event) {
     event.preventDefault();
-    if (counter <= 4) {
+    if (counter < 4) {
       counter++;
       $('<label>')
         .attr('for', 'options')
@@ -56,46 +56,58 @@ $(() => {
         .attr('class', 'delete')
         .appendTo($('.test'));
       $('<br>').appendTo($('.test'));
-      if (counter === 3) {
-        $('.test')
-          .addClass('option3')
-          .addClass('options');
+        if (counter === 3) {
+          $('.test')
+            .addClass('option3')
+            .addClass('options');
+        } else if (counter === 4) {
+          $('.test')
+            .removeClass('option3')
+            .addClass('option4');
+        }
       } else if (counter === 4) {
-        $('.test')
-          .removeClass('option3')
-          .addClass('option4');
-      } else if (counter === 5) {
-        $('.test')
-          .removeClass('option4')
-          .addClass('option5');
+        counter++;
+      $('<label>')
+        .attr('for', 'options')
+        .attr('class', 'counterText')
+        .text(`Option ${counter}: `)
+        .appendTo($('.test'));
+      $('<input>')
+        .attr('type', 'text')
+        .attr('name', 'options')
+        .appendTo($('.test'))
+        .focus();
+      $('<button><i class="far fa-trash-alt"></i></button>')
+        .attr('class', 'delete')
+        .appendTo($('.test'));
+      $('<br>').appendTo($('.test'));
+      $('.test')
+        .removeClass('option4')
+        .addClass('option5');
+      $('#addOption').addClass("hidedelete");
       }
-    } else {
-      // implement later with css
-      $('<br><span>')
-        .attr('class', 'removeError')
-        .text(`Let's be real you don't have that many things to do. Let's limit it to 5.`)
-        .appendTo($('form'));
-    }
   });
 
   $('form').on('click', '.delete', function(event) {
     event.preventDefault();
-    const $clickTarget = $(event.target).parent();
+    const $clickTarget = $(event.target).parent('button');
     $clickTarget.next().remove();
     $clickTarget.prev().remove();
     $clickTarget.prev().remove();
     $clickTarget.remove();
-    $('.removeError').remove();
     if ($('.test').hasClass('option5')) {
       $('.test')
         .removeClass('option5')
         .addClass('option4');
+      $('#addOption').removeClass("hidedelete");
     } else if ($('.test').hasClass('option4')) {
       $('.test')
         .removeClass('option4')
         .addClass('option3');
+      $('#addOption').removeClass("hidedelete");
     } else if ($('.test').hasClass('option3')) {
       $('.test').removeClass('option3');
+      $('#addOption').removeClass("hidedelete");
     }
     resetCounter();
     counter--;
@@ -107,13 +119,12 @@ $(() => {
 
   $('.vote').on('click', function(event) {
     event.preventDefault();
-    let $headerString = $(event.target).siblings('#pollid');
+    let $headerString = $(event.target).parent().siblings('#pollid');
     let randomURL = $headerString.text();
     let optionArray = [];
     $('li').each(function(idx, li) {
       optionArray.push($(li).context.innerText);
     });
-    // $.post("/vote", {option: optionArray, randomURL: randomURL});
     $.ajax({
       url: '/api/users/vote',
       type: 'POST',
@@ -154,7 +165,7 @@ $(() => {
     if (email === '' && title === '') {
       e.preventDefault();
       $('.error')
-        .text('You have to create a poll first!')
+        .text('Please complete the form first!')
         .hide();
       $('.error').slideDown('slow');
     } else if (email === '') {
@@ -166,13 +177,13 @@ $(() => {
     } else if (title === '') {
       e.preventDefault();
       $('.error')
-        .text('Please enter a valid Title before submitting!')
+        .text('Please enter a valid title before submitting!')
         .hide();
       $('.error').slideDown('slow');
-    } else if (opArr.every(element => element === '')){
+    } else if (opArr.every(element => element === '') || opArr.filter(word => word).length === 1){
       e.preventDefault();
       $('.error')
-        .text('You must submit some options!')
+        .text('You must have at least 2 options!')
         .hide();
       $('.error').slideDown('slow');
     } else if (opLen.some(tooMany)) {

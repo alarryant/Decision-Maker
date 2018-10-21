@@ -15,16 +15,18 @@ module.exports = knex => {
   });
 
   router.get('/user/:id', (req, res) => {
+    let randomURL = req.params.id;
+
     knex
       .select('option.text', 'poll.name', 'poll.description')
       .from('option')
       .join('poll', 'poll_id', '=', 'poll.id')
-      .where('poll.url', 'like', req.params.id)
+      .where('poll.url', 'like', randomURL)
       .asCallback((err, option) => {
         if (err) throw err;
         let templateVars = {
           option,
-          randomURL: req.params.id
+          randomURL,
         };
         res.render('poll', templateVars);
       });
@@ -117,29 +119,37 @@ module.exports = knex => {
     let options = req.body.option;
     let randomURL = req.body.randomURL;
 
-    knex('poll')
-      .select('email', 'name')
-      .where('url', '=', randomURL)
-      .then(info => {
-        var data = {
-          from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
-          to: `${info[0].email}`,
-          subject: `Someone just voted in this poll: ${info[0].name}!`,
-          text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
-        };
-        mailgun.messages().send(data, function(error, body) {
-          // console.log(body);
-        });
-      });
+  knex('poll').select('email', 'name').where('url', '=', randomURL).then((info) => {
+    var data = {
+      from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+      to: `${info[0].email}`,
+      subject: `Someone just voted in this poll: ${info[0].name}!`,
+      text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
+    };
+    mailgun.messages().send(data, function (error, body) {
+      if (error) throw error;
+    })
+  });
 
-    // store in promise new array of data to access later
-    return new Promise((resolve, reject) => {
-      resolve(
-        knex
-          .from('option')
-          .join('poll', 'poll_id', 'poll.id')
-          .where('poll.url', 'like', randomURL)
-      );
+  // store in promise new array of data to access later
+  return new Promise((resolve,reject) => {
+  resolve(knex.from('option').join('poll', 'poll_id', 'poll.id' ).where('poll.url', 'like', `%${randomURL}%`))
+  })
+  .then((data) => {
+    //loop through new data and increment columns
+    const votePromise = [];
+    for(let i = 0; i < data.length; i ++){
+      votePromise.push(
+      knex('option')
+        .returning('*')
+        .where({text: options[i], poll_id: data[i].id })
+        .increment('votes', options.length - i));
+    }
+    Promise.all(votePromise)
+    .then((data) => {
+      res.json({result: "True"});
+    }).catch(err =>{
+      console.log("what's this err", err);
     })
       .then(data => {
         //loop through new data and increment columns
