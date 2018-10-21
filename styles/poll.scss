@@ -24,6 +24,7 @@
     padding: 50px 200px 200px 200px;
     // align-items: center;
   }
+
   header {
     font-size: 6em;
     margin: 30px;
@@ -38,6 +39,21 @@
       font-size: 3em;
     }
   }
-  .vote {
+}
+
+.vote {
+  border-radius: 10px;
+  //   width: 120px;
+  height: 200px;
+  font-size: 30px;
+  padding: 20px 20px 20px 20px;
+  text-align: center;
+  // text-decoration: none;
+  // display: inline-block;
+  // font-size: 16px;
+  //   position: relative;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
   }
 }
