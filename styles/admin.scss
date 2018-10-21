@@ -1,35 +1,70 @@
 .results {
+  border-radius: 25px;
   width: 700px;
-  height: 100;
-  background-color: #eaeaf1;
+  background: url(../images/conductor.png);
+  background-color: white;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   padding: 15px 40px;
   margin: auto;
 
-  p {
-  display: none;
+  ol {
+    font-size: 3em;
+    margin: 0px 20px;
+  }
+
+  li {
+    width: 325px;
   }
 
   .postcopied {
-  display: inline-block
+    display: none;
+    line-height: 25px;
+    margin: 0px 200px 0px 0px;
+    float: right;
+    color: #720200;
   }
 
   .clipboard {
-  display: inline-block;
-  resize: none;
-  width: 250px;
-  height: 25px;
-  font-size: 1em;
-  margin-right: 10px;
+    display: inline-block;
+    resize: none;
+    width: 250px;
+    height: 25px;
+    font-size: 1em;
+    margin-right: 10px;
+    clear: left;
+    float: left;
   }
 
   .clipboardbutton {
-    font-size: 1em;
+    font-size: 1.5em;
     display: inline-block;
+    line-height: 25px;
+    clear: left;
+      &:hover {
+      opacity: 0.7;
+      color: #7da5af;
+      }
   }
 
   h5 {
-  font-size: 1em;
-  margin-bottom: 0px;
+    font-size: 2em;
+    margin-bottom: 0px;
+    color: #720200;
+  }
+
+  .polltitle {
+    text-transform: capitalize;
+    font-size: 3em;
+    width: 375px;
+    color: #0e343f;
+  }
+
+  .pagetitle {
+    width: 100%;
+    font-size: 2em;
+    color: #720200;
   }
 }
 
