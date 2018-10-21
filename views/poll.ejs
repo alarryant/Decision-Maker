@@ -10,7 +10,7 @@
   <% include partials/_header %>
   <main class="poll_container">
     <header>
-      Conduct Your Vote
+      Conduct Your Vote!
     </header>
     <div class="poll_container_box">
       <div class="poll_title">
@@ -18,11 +18,13 @@
         <%= Object.values(option[0])[1]%>
       </div>
       <div class="description">
-        Description:
         <%= Object.values(option[0])[2]%>
       </div>
-
+      <div class=poll_instruction>
+        drag and drop the options to order your preference!
+      </div>
       <ul id="sortable-1">
+
         <% for (i = 0; i < option.length; i++) {%>
 
         <li class="default">
