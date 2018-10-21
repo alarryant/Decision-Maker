@@ -79,3 +79,20 @@
   }
 }
 
+.fb-share {
+  color: #0e343f;
+  &:hover {
+    color: #7da5af;;
+  }
+}
+
+.social-share {
+  margin: 5px;
+  display: inline-block;
+  font-size: 2em;
+  color: #0e343f;
+  &:hover {
+    color: #7da5af;;
+  }
+}
+
