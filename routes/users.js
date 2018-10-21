@@ -82,10 +82,8 @@ module.exports = knex => {
     var data = {
       from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
       to: req.body.email,
-      subject: 'Thank you for using Decision Maker!',
-      text: `Your poll, ${
-        req.body.title
-      }, has been created. \n\nHere is the link to your results: localhost:8080/${randomURL}/admin \n\nHere is the shareable link to your poll: localhost:8080/${randomURL}`
+      subject: 'Thank you for using Choo-Choose!',
+      text: `Your poll, "${req.body.title}", has been created. \n\nHere is the link to your results: localhost:8080/api/users/admin/${randomURL} \n\nHere is the shareable link to your poll: localhost:8080/api/users/user/${randomURL}`
     };
 
     mailgun.messages().send(data, function(error, body) {
@@ -125,7 +123,7 @@ module.exports = knex => {
           from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
           to: `${info[0].email}`,
           subject: `Someone just voted in this poll: ${info[0].name}!`,
-          text: `Here is the link to the results: localhost:8080/${randomURL}/admin`
+          text: `Here is the link to the results: localhost:8080/api/users/admin/${randomURL}`
         };
         mailgun.messages().send(data, function(error, body) {
           console.log(body);
