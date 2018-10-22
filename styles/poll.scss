@@ -12,22 +12,6 @@ $grey: #858788;
   align-items: center;
   text-align: center;
 
-  .poll_container_box {
-    width: 800px;
-    border-radius: 20px;
-    height: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 50px 75px 200px 325px;
-    align-items: center;
-    background: url(../images/conductorleftside.png);
-    background-color: #fefcde;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-  }
-
   header {
     font-size: 6em;
     margin: 35px;
@@ -84,3 +68,29 @@ $grey: #858788;
     }
   }
 }
+.poll_container_box {
+  background-position: 400px 50%;
+  width: 800px;
+  border-radius: 25px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 75px 200px 325px;
+  align-items: center;
+  background-image: url(../images/conductorleftside.png);
+  background-color: #fefcde;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  // background-position: fixed;
+}
+// border-radius: 25px;
+// width: 700px;
+// background: url(../images/conductor.png);
+// background-color: white;
+// background-repeat: no-repeat;
+// background-attachment: fixed;
+// background-position: center;
+// padding: 15px 40px;
+// margin: auto;

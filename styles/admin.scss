@@ -42,10 +42,10 @@
     display: inline-block;
     line-height: 25px;
     clear: left;
-      &:hover {
+    &:hover {
       opacity: 0.7;
       color: #7da5af;
-      }
+    }
   }
 
   h5 {
@@ -75,14 +75,14 @@
   background-color: #ecdad9;
 
   h1 {
-  font-size: 3em;
+    font-size: 3em;
   }
 }
 
 .fb-share {
   color: #0e343f;
   &:hover {
-    color: #7da5af;;
+    color: #7da5af;
   }
 }
 
@@ -92,7 +92,6 @@
   font-size: 2em;
   color: #0e343f;
   &:hover {
-    color: #7da5af;;
+    color: #7da5af;
   }
 }
-
