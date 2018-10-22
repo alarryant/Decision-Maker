@@ -22,9 +22,7 @@ $(() => {
 
   $(function() {
     $('.header').hover(function() {
-      // $(this).toggleClass('active');
       $('#navbar').toggle('slide', { direction: 'right' }, 2000);
-      // ;
     });
   });
 
@@ -35,6 +33,7 @@ $(() => {
       $(val).text(`Option ${increment}: `);
     });
   }
+
   var counter = 2;
 
   $('#addOption').click(function(event) {
@@ -67,47 +66,61 @@ $(() => {
         }
       } else if (counter === 4) {
         counter++;
-      $('<label>')
-        .attr('for', 'options')
-        .attr('class', 'counterText')
-        .text(`Option ${counter}: `)
-        .appendTo($('.test'));
-      $('<input>')
-        .attr('type', 'text')
-        .attr('name', 'options')
-        .appendTo($('.test'))
-        .focus();
-      $('<button><i class="far fa-trash-alt"></i></button>')
-        .attr('class', 'delete')
-        .appendTo($('.test'));
-      $('<br>').appendTo($('.test'));
-      $('.test')
-        .removeClass('option4')
-        .addClass('option5');
-      $('#addOption').addClass("hidedelete");
+        $('<label>')
+          .attr('for', 'options')
+          .attr('class', 'counterText')
+          .text(`Option ${counter}: `)
+          .appendTo($('.test'));
+        $('<input>')
+          .attr('type', 'text')
+          .attr('name', 'options')
+          .appendTo($('.test'))
+          .focus();
+        $('<button><i class="far fa-trash-alt"></i></button>')
+          .attr('class', 'delete')
+          .appendTo($('.test'));
+        $('<br>')
+          .appendTo($('.test'));
+        $('.test')
+          .removeClass('option4')
+          .addClass('option5');
+        $('#addOption')
+          .addClass("hidedelete");
       }
   });
 
   $('form').on('click', '.delete', function(event) {
     event.preventDefault();
     const $clickTarget = $(event.target).parent('button');
-    $clickTarget.next().remove();
-    $clickTarget.prev().remove();
-    $clickTarget.prev().remove();
-    $clickTarget.remove();
+    $clickTarget
+      .next()
+      .remove();
+    $clickTarget
+      .prev()
+      .remove();
+    $clickTarget
+      .prev()
+      .remove();
+    $clickTarget
+      .remove();
+
     if ($('.test').hasClass('option5')) {
-      $('.test')
-        .removeClass('option5')
-        .addClass('option4');
-      $('#addOption').removeClass("hidedelete");
+        $('.test')
+          .removeClass('option5')
+          .addClass('option4');
+        $('#addOption')
+          .removeClass("hidedelete");
     } else if ($('.test').hasClass('option4')) {
       $('.test')
         .removeClass('option4')
         .addClass('option3');
-      $('#addOption').removeClass("hidedelete");
+      $('#addOption')
+        .removeClass("hidedelete");
     } else if ($('.test').hasClass('option3')) {
-      $('.test').removeClass('option3');
-      $('#addOption').removeClass("hidedelete");
+      $('.test')
+        .removeClass('option3');
+      $('#addOption')
+        .removeClass("hidedelete");
     }
     resetCounter();
     counter--;
@@ -125,6 +138,7 @@ $(() => {
     $('li').each(function(idx, li) {
       optionArray.push($(li).context.innerText);
     });
+
     $.ajax({
       url: '/api/users/vote',
       type: 'POST',
@@ -148,50 +162,54 @@ $(() => {
       .children('div')
       .children('#title')
       .val();
-      // e.preventDefault();
+
       let opArr = [];
       let opLen = [];
 
-      function tooMany(element){
-        return element > 100;
-      }
+  function tooMany(element){
+    return element > 100;
+  }
 
-      $(e.target).children('div').children('.charlim').each((idx, li) => { opArr.push(($(li).val()))});
-      opArr.forEach((element) => {
-        opLen.push(element.length);
-      })
-      console.log(opLen);
+  $(e.target).children('div').children('.charlim').each((idx, li) => { opArr.push(($(li).val()))});
+    opArr.forEach((element) => {
+      opLen.push(element.length);
+    })
 
     if (email === '' && title === '') {
       e.preventDefault();
       $('.error')
         .text('Please complete the form first!')
         .hide();
-      $('.error').slideDown('slow');
+      $('.error')
+        .slideDown('slow');
     } else if (email === '') {
       e.preventDefault();
       $('.error')
         .text('Please enter a valid email before submitting!')
         .hide();
-      $('.error').slideDown('slow');
+      $('.error')
+        .slideDown('slow');
     } else if (title === '') {
       e.preventDefault();
       $('.error')
         .text('Please enter a valid title before submitting!')
         .hide();
-      $('.error').slideDown('slow');
+      $('.error')
+        .slideDown('slow');
     } else if (opArr.every(element => element === '') || opArr.filter(word => word).length === 1){
       e.preventDefault();
       $('.error')
         .text('You must have at least 2 options!')
         .hide();
-      $('.error').slideDown('slow');
+      $('.error')
+        .slideDown('slow');
     } else if (opLen.some(tooMany)) {
       e.preventDefault();
       $('.error')
         .text('Character length on option is 100!')
         .hide();
-      $('.error').slideDown('slow');
+      $('.error')
+        .slideDown('slow');
     } else {
       $.ajax('/api/users/create', { method: 'POST'});
     }
@@ -209,12 +227,24 @@ $(() => {
 
   $('.results').on('click', '.clipboardbutton', function(event) {
     event.preventDefault();
-    $(event.target).parent().next().slideUp();
+    $(event.target)
+      .parent()
+      .next()
+      .slideUp();
     $textarea = $(event.target).parent().prev();
-    $textarea.select();
+    $textarea
+      .select();
     document.execCommand('copy');
-    $textarea.blur();
-    $(event.target).parent().next().slideDown(800).delay(2000);
-    $(event.target).parent().next().slideUp(800);
+    $textarea
+      .blur();
+    $(event.target)
+      .parent()
+      .next()
+      .slideDown(800)
+      .delay(2000);
+    $(event.target)
+      .parent()
+      .next()
+      .slideUp(800);
   });
 });

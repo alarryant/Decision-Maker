@@ -16,20 +16,20 @@
   }
 }
 
-  #addOption {
-    display: inline-block;
-    border-radius: 10px;
-    width: 120px;
-    height: 70px;
-    font-family: 'VT323', monospace;
-    font-size: 1.25em;
-    position: relative;
-    float: left;
-    margin: 22px 0px 0px 57px;
-    opacity: 1;
-      &:hover {
-        opacity: 0.7;
-        background-color: #ecdada;
+#addOption {
+  display: inline-block;
+  border-radius: 10px;
+  width: 120px;
+  height: 70px;
+  font-family: 'VT323', monospace;
+  font-size: 1.25em;
+  position: relative;
+  float: left;
+  margin: 22px 0px 0px 57px;
+  opacity: 1;
+    &:hover {
+      opacity: 0.7;
+      background-color: #ecdada;
   }
 }
 
@@ -38,7 +38,6 @@
 }
 
 form {
-
   .error {
   width: 400px;
     position: absolute;
@@ -104,6 +103,7 @@ form {
     font-weight: bold;
     font-family: 'VT323', monospace;
   }
+
   .delete {
     background: none;
     border: none;

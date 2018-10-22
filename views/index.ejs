@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Bai+Jamjuree|Libre+Franklin|Quicksand" rel="stylesheet">
   <% include partials/_scripts %>
   <% include partials/_header %>
 </head>
@@ -13,17 +12,33 @@
       <h3>Create New Poll</h3>
       <span class="error"></span>
       <div class="test">
-          <label for="email">Email: </label><input id="email" type="email" name="email"><br>
-          <label for="title">Title: </label><input id="title" type="title" name="title"><br>
-          <label for="description">Description: </label><input type="description" name="description" placeholder="optional"><br>
-          <label for="options" class="counterText">Option 1: </label><input class="charlim" type="text" name="options"><br>
-          <label for="options" class="counterText">Option 2: </label><input class="charlim" type="text" name="options"><br>
+        <label for="email">
+          Email:
+        </label>
+        <input id="email" type="email" name="email"><br>
+        <label for="title">
+          Title:
+        </label>
+        <input id="title" type="title" name="title"><br>
+        <label for="description">
+          Description:
+        </label>
+        <input type="description" name="description" placeholder="optional"><br>
+        <label for="options" class="counterText">
+          Option 1:
+        </label>
+        <input class="charlim" type="text" name="options"><br>
+        <label for="options" class="counterText">
+          Option 2:
+        </label>
+        <input class="charlim" type="text" name="options"><br>
       </div>
-      <button type="button" id="addOption">Add another option</button><br>
+      <button type="button" id="addOption">
+        Add another option
+      </button><br>
       <input type="submit" id="create" value="Create Poll">
     </form>
   </main>
-
 </body>
 
 </html>
