@@ -1,5 +1,7 @@
+$hover-pink: #ecdada;
+$font: #34444d;
+
 #create {
-  display: inline-block;
   width: 120px;
   height: 70px;
   border-radius: 10px;
@@ -12,12 +14,11 @@
   opacity: 1;
   &:hover {
     opacity: 0.7;
-    background-color: #ecdada;
+    background-color: $hover-pink;
   }
 }
 
 #addOption {
-  display: inline-block;
   border-radius: 10px;
   width: 120px;
   height: 70px;
@@ -27,9 +28,9 @@
   float: left;
   margin: 22px 0px 0px 57px;
   opacity: 1;
-    &:hover {
-      opacity: 0.7;
-      background-color: #ecdada;
+  &:hover {
+    opacity: 0.7;
+    background-color: $hover-pink;
   }
 }
 
@@ -39,7 +40,7 @@
 
 form {
   .error {
-  width: 400px;
+    width: 400px;
     position: absolute;
     margin-bottom: 25px;
     background-color: #f58c8c;
@@ -56,7 +57,7 @@ form {
   h3 {
     margin-left: 112px;
     margin-bottom: 70px;
-    color: #34444d;
+    color: $font;
     font-size: 3em;
     font-family: 'VT323', monospace;
   }
@@ -97,7 +98,7 @@ form {
     width: 110px;
     float: left;
     font-size: 1.25em;
-    color: #34444d;
+    color: $font;
     letter-spacing: 1px;
     margin: 5px 15px 5px 15px;
     font-weight: bold;
@@ -107,11 +108,11 @@ form {
   .delete {
     background: none;
     border: none;
-    color: #34444d;
+    color: $font;
     font-size: 1.5em;
     float: right;
     padding: 5px 0px 0px 0px;
-    display: inline-block;
+
     &:hover {
       opacity: 0.7;
       color: red;

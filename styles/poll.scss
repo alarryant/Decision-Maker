@@ -8,7 +8,6 @@ $grey: #858788;
   background-color: #ecdada;
   display: flex;
   flex-direction: column;
-  position: relative;
   align-items: center;
   text-align: center;
   padding-bottom: 150px;
@@ -40,7 +39,6 @@ $grey: #858788;
     text-transform: capitalize;
     word-wrap: break-word;
   }
-
 
   .description {
     font-size: 25px;

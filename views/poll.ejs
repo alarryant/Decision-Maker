@@ -3,7 +3,6 @@
 
 <head>
   <% include partials/_scripts %>
-
 </head>
 
 <body>
@@ -23,27 +22,19 @@
         drag and drop the options to order your preference!
       </div>
       <ul id="sortable-1">
-
         <% for (i = 0; i < option.length; i++) {%>
-
         <li class="default">
           <%= Object.values(option[i])[0] %>
         </li>
         <% };%>
-
       </ul>
-
       <button class="vote" type="submit"> Submit </button>
-
     </div>
     <h5 hidden id="pollid">
       <%=randomURL%>
     </h5>
   </main>
-
-
   </main>
-
 
 </body>
 
