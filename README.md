@@ -10,7 +10,8 @@ Choo-Chooser is a simple polling web application to aid its users in making some
 !["Share on facebook!"](https://github.com/alarryant/Decision-Maker/blob/master/docs/facebook.gif?raw=true)
 !["Let your friends cast their votes!"](https://github.com/alarryant/Decision-Maker/blob/master/docs/cast-your-vote.gif?raw=true)
 !["See the results!"](https://github.com/alarryant/Decision-Maker/blob/master/docs/Screen%20Shot%202018-10-23%20at%207.11.39%20PM.png?raw=true)
-
+!["Example of Mailgun integration"](https://github.com/alarryant/Decision-Maker/blob/master/public/images/Email1.png)
+!["Example of Mailgun integration"](https://github.com/alarryant/Decision-Maker/blob/master/public/images/Email2.png)
 
 ## Getting Started
 
