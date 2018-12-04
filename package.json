@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "local": "./node_modules/.bin/nodemon -L --ignore public/",
     "knex": "./node_modules/.bin/knex"
   },
   "author": "Lighthouse Labs",
@@ -23,8 +22,5 @@
     "node-sass-middleware": "^0.9.8",
     "pg": "^6.0.2",
     "sqlite3": "^4.0.2"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.4"
   }
 }

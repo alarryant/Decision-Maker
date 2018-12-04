@@ -4,10 +4,10 @@ const express = require('express');
 const router = express.Router();
 const functions = require('../export-functions.js');
 
-var mailgun = require('mailgun-js');
-var api_key = process.env.MAILGUN_API;
-var DOMAIN = process.env.MAILGUN_DOMAIN;
-var mailgun = require('mailgun-js')({ apiKey: api_key, domain: DOMAIN });
+// Mailgun API here
+// var api_key = process.env.MAILGUN_API;
+// var DOMAIN = process.env.MAILGUN_DOMAIN;
+// var mailgun = require('mailgun-js')({ apiKey: api_key, domain: DOMAIN });
 
 module.exports = knex => {
   router.get('/thanks', (req, res) => {
@@ -80,27 +80,27 @@ module.exports = knex => {
               res.redirect(`/api/users/admin/${randomURL}`);
             })
             .catch(err => {
-              console.log('y tho', err);
+              console.log(err);
               res.redirect('/');
             });
         })
         .catch(err => {
-          console.log('y tho', err);
+          console.log(err);
           res.redirect('/');
         });
     }
 
     // mailgun
-    const data = {
-      from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
-      to: req.body.email,
-      subject: 'Thank you for using Choo-Choose!',
-      text: `Your poll, "${req.body.title}", has been created. \n\nHere is the link to your results: localhost:8080/api/users/admin/${randomURL} \n\nHere is the shareable link to your poll: localhost:8080/api/users/user/${randomURL}`
-    };
+    // const data = {
+    //   from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+    //   to: req.body.email,
+    //   subject: 'Thank you for using Choo-Choose!',
+    //   text: `Your poll, "${req.body.title}", has been created. \n\nHere is the link to your results: localhost:8080/api/users/admin/${randomURL} \n\nHere is the shareable link to your poll: localhost:8080/api/users/user/${randomURL}`
+    // };
 
-    mailgun.messages().send(data, function(error, body) {
-      console.log(body);
-    });
+    // mailgun.messages().send(data, function(error, body) {
+    //   console.log(body);
+    // });
   });
 
   router.get('/admin/:id', (req, res) => {
@@ -132,16 +132,17 @@ module.exports = knex => {
       .select('email', 'name')
       .where('url', '=', randomURL)
       .then(info => {
+        res.json(info);
         // mailgun
-        var data = {
-          from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
-          to: `${info[0].email}`,
-          subject: `Someone just voted in this poll: ${info[0].name}!`,
-          text: `Here is the link to the results: localhost:8080/api/users/admin/${randomURL}`
-        };
-        mailgun.messages().send(data, function(error, body) {
-          console.log(body);
-        });
+        // var data = {
+        //   from: 'Choo Choose <postmaster@sandbox648386da93cf4c79af7f46bd8fb0719c.mailgun.org>',
+        //   to: `${info[0].email}`,
+        //   subject: `Someone just voted in this poll: ${info[0].name}!`,
+        //   text: `Here is the link to the results: localhost:8080/api/users/admin/${randomURL}`
+        // };
+        // mailgun.messages().send(data, function(error, body) {
+        //   console.log(body);
+        // });
       });
 
     // store in promise new array of data to access later
@@ -169,11 +170,11 @@ module.exports = knex => {
             res.json({ result: 'True' });
           })
           .catch(err => {
-            console.log("what's this err", err);
+            console.log(err);
           });
       })
       .catch(err => {
-        console.log('WHHHHY', err);
+        console.log(err);
       });
   });
 
