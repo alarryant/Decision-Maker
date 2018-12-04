@@ -77,7 +77,7 @@ module.exports = knex => {
 
           Promise.all(insert_promises)
             .then(data => {
-              res.redirect(`/admin/${randomURL}`);
+              res.redirect(`users/admin/${randomURL}`);
             })
             .catch(err => {
               console.log(err);
