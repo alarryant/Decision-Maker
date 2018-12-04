@@ -77,7 +77,7 @@ module.exports = knex => {
 
           Promise.all(insert_promises)
             .then(data => {
-              res.redirect(`/api/users/admin/${randomURL}`);
+              res.redirect(`/admin/${randomURL}`);
             })
             .catch(err => {
               console.log(err);
@@ -89,6 +89,7 @@ module.exports = knex => {
           res.redirect('/');
         });
     }
+    // res.redirect(`/api/users/admin/${randomURL}`);
 
     // mailgun
     // const data = {
