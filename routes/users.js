@@ -62,7 +62,7 @@ module.exports = knex => {
           for (let i = 0; i < req.body.options.length; i++) {
             const option_text = req.body.options[i];
             if (option_text === '') {
-              console.log('WHAt');
+              console.log(`Can't leave the input field blank.`);
             } else {
               insert_promises.push(
                 knex('option')
