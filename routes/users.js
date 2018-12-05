@@ -12,12 +12,12 @@ const functions = require('../export-functions.js');
 // var mailgun = require('mailgun-js')({ apiKey: api_key, domain: DOMAIN });
 
 module.exports = knex => {
-  router.get('/thanks', (req, res) => {
+  router.get('api/users/thanks', (req, res) => {
     res.render('thanks');
   });
 
 // voting page
-  router.get('/user/:id', (req, res) => {
+  router.get('api/users/user/:id', (req, res) => {
     let randomURL = req.params.id;
 
     knex
