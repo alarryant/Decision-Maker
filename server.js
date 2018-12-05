@@ -19,7 +19,13 @@ const knexLogger = require('knex-logger');
 // Seperated Routes for each Resource
 const usersRoutes = require('./routes/users');
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+};
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
