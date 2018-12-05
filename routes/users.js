@@ -36,7 +36,7 @@ module.exports = knex => {
   });
 
 // create a poll form submission
-  router.post('/create', (req, res) => {
+  router.post('api/users/create', (req, res) => {
     let randomURL = functions.generateRandomString();
 
     if (req.body.email === '' || req.body.title === '' || req.body.options[0] === '') {
@@ -105,7 +105,7 @@ module.exports = knex => {
     // });
   });
 
-  router.get('/admin/:id', (req, res) => {
+  router.get('/api/users/admin/:id', (req, res) => {
     let randomURL = req.params.id;
     knex
       .select('text', 'poll.name')
@@ -126,7 +126,7 @@ module.exports = knex => {
   });
 
   // vote form submission
-  router.post('/vote', (req, res) => {
+  router.post('/api/users/vote', (req, res) => {
     let options = req.body.option;
     let randomURL = req.body.randomURL;
 
