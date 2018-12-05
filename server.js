@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv').config({path: __dirname + '/.env'});
+require('dotenv').config();
 
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || 'development';
@@ -38,7 +38,7 @@ app.use(
     outputStyle: 'expanded'
   })
 );
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, './public')));
 
 // Mount all resource routes
 app.use('/api/users', usersRoutes(knex));
