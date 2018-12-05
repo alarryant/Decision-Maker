@@ -12,12 +12,12 @@ const functions = require('../export-functions.js');
 // var mailgun = require('mailgun-js')({ apiKey: api_key, domain: DOMAIN });
 
 module.exports = knex => {
-  router.get('api/users/thanks', (req, res) => {
+  router.get('/thanks', (req, res) => {
     res.render('thanks');
   });
 
 // voting page
-  router.get('api/users/user/:id', (req, res) => {
+  router.get('/user/:id', (req, res) => {
     let randomURL = req.params.id;
 
     knex
@@ -36,7 +36,7 @@ module.exports = knex => {
   });
 
 // create a poll form submission
-  router.post('api/users/create', (req, res) => {
+  router.post('/create', (req, res) => {
     let randomURL = functions.generateRandomString();
 
     if (req.body.email === '' || req.body.title === '' || req.body.options[0] === '') {
@@ -105,7 +105,7 @@ module.exports = knex => {
     // });
   });
 
-  router.get('/api/users/admin/:id', (req, res) => {
+  router.get('/admin/:id', (req, res) => {
     let randomURL = req.params.id;
     knex
       .select('text', 'poll.name')
@@ -126,7 +126,7 @@ module.exports = knex => {
   });
 
   // vote form submission
-  router.post('/api/users/vote', (req, res) => {
+  router.post('/vote', (req, res) => {
     let options = req.body.option;
     let randomURL = req.body.randomURL;
 
