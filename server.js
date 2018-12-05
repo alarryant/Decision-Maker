@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
 };
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
 });
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
