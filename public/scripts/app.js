@@ -140,7 +140,7 @@ $(() => {
     });
 
     $.ajax({
-      url: '/vote',
+      url: '/api/users/vote',
       type: 'POST',
       data: { option: optionArray, randomURL: randomURL },
       success: function(result) {
@@ -173,7 +173,7 @@ $(() => {
   $(e.target).children('div').children('.charlim').each((idx, li) => { opArr.push(($(li).val()))});
     opArr.forEach((element) => {
       opLen.push(element.length);
-    });
+    })
 
     if (email === '' && title === '') {
       e.preventDefault();
@@ -211,7 +211,7 @@ $(() => {
       $('.error')
         .slideDown('slow');
     } else {
-      $.ajax('/create', { method: 'POST'});
+      $.ajax('/api/users/create', { method: 'POST'});
     }
   });
 
